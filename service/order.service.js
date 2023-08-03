@@ -3,7 +3,7 @@ const bluebird = require('bluebird'); // eslint-disable-line no-global-assign
 const redis = require("redis");
 const Web3 = require('web3')
 const {redisUrl, fxceCfg, contractParams} = require("../config/vars");
-let redisClient = redis.createClient(redisUrl);
+// let redisClient = redis.createClient(redisUrl);
 bluebird.promisifyAll(redis);
 
 //contract config 
@@ -36,19 +36,19 @@ exports.createOrder = async (req) =>{
         data: orderByteCode.object,
         arguments: [
             fxceCfg.contractOwnerAddr, //fee wallet address
-            [req.challengeId,req.symbol,req.side,0,0,0,0,req.amount,0,0,req.duration], //order info
+            [req.assetAddress,req.symbol,req.startPrice, req.endPrice, 0, 0,req.amount, req.duration], //order info
             req.owner, //trader set owner of order
-            fxceCfg.fxcePriceFeedAddress // priceFeed address
+            0 // fee config
         ]
     }
     let deployTx =deployContract.deploy(payload)
     const createTransaction = await web3.eth.accounts.signTransaction(
         {
-           from: fxceCfg.contractOwnerAddr,
-           data: deployTx.encodeABI(),
-           gas: 5000000,
-           gasPrice: contractParams.gasPrice,
-           value: web3.utils.toWei(JSON.stringify(req.amount), 'ether')
+            from: fxceCfg.contractOwnerAddr,
+            data: deployTx.encodeABI(),
+            gasPrice: 10000000000,
+            gasLimit: 12354599,
+            value: req.amount
         },
         fxceCfg.contractOwnerPriv
     );
@@ -56,26 +56,27 @@ exports.createOrder = async (req) =>{
         createTransaction.rawTransaction
     );
     console.log('Contract deployed at address', createReceipt.contractAddress);
-    let orderInfo = {
-        orderId: createReceipt.contractAddress,
-        symbol: req.symbol,
-        createdAt: Date.now(),
-        status: 0
-    }
-    if(orderInfo.orderId == ''){
-        return 'Error missing orderId'
-    }
-    let request = {
-        orderContractAddress: createReceipt.contractAddress,
-        owner: req.owner,
-        admin: createReceipt.contractAddress,
-    }
+    return createReceipt.contractAddress
+    // let orderInfo = {
+    //     orderId: createReceipt.contractAddress,
+    //     symbol: req.symbol,
+    //     createdAt: Date.now(),
+    //     status: 0
+    // }
+    // if(orderInfo.orderId == ''){
+    //     return 'Error missing orderId'
+    // }
+    // let request = {
+    //     orderContractAddress: createReceipt.contractAddress,
+    //     owner: req.owner,
+    //     admin: createReceipt.contractAddress,
+    // }
 
-    let respSetAdmin = await setAdminToken(request)
-    console.log("Resp set admin token: ", respSetAdmin.transactionHash, " -s: ", respSetAdmin.status)
+    // let respSetAdmin = await setAdminToken(request)
+    // console.log("Resp set admin token: ", respSetAdmin.transactionHash, " -s: ", respSetAdmin.status)
 
-    let receipt = await redisClient.zadd(req.challengeId, req.score, JSON.stringify(orderInfo));
-    return receipt
+    // // let receipt = await redisClient.zadd(req.challengeId, req.score, JSON.stringify(orderInfo));
+    // return receipt
 }
 
 exports.setPriceOrder = async (req) => {
@@ -90,7 +91,7 @@ exports.setPriceOrder = async (req) => {
 }
 
 exports.scanPendingOrder = async (req) =>{
-    let listOrder = await redisClient.zrangeAsync(req, 0, -1);
+    // let listOrder = await redisClient.zrangeAsync(req, 0, -1);
     return listOrder
 }
 
@@ -106,10 +107,10 @@ exports.addWhiteListAddress = async(req) =>{
 }
 
 exports.claimProfit = async(req) =>{
-    let orderContract = new contractProvider(orderAbi, req.orderContractAddress)
+    let orderContract = new contractProvider(orderAbi, req.orderAdr)
     let nonce = await getNonce(fxceCfg.contractOwnerAddr)
     try {
-        let receipt = await orderContract.methods.claimProfit(req.sender, req.amount).send(Object.assign(contractParams, {nonce: nonce}))
+        let receipt = await orderContract.methods.withDraw(req.receiver).send(Object.assign(contractParams, {nonce: nonce}))
         return receipt
     } catch (err) {
         return err.message
@@ -131,21 +132,46 @@ exports.confirmResult = async(req) =>{
     let orderContract = new contractProvider(orderAbi, req.orderContractAddress)
     let nonce = await getNonce(fxceCfg.contractOwnerAddr)
     let price = await getLatestPrice(req.symbol)
-    //get order info 
-    let orderInfo
-    try {
-        orderInfo = await orderContract.methods.getOrderInfo(req.orderContractAddress).call();
-    } catch (err) {
-        return err.message
-    }
+    // //get order info 
+    // let orderInfo
+    // try {
+    //     orderInfo = await orderContract.methods.getOrderInfo(req.orderContractAddress).call();
+    // } catch (err) {
+    //     return err.message
+    // }
 
-    console.log("Duration: ", Date.now() - orderInfo.openAt, " -n: ", Date.now(), " -open: ", orderInfo.openAt)
+    // console.log("Duration: ", Date.now() - orderInfo.openAt, " -n: ", Date.now(), " -open: ", orderInfo.openAt)
 
     try {
-        let receipt = await orderContract.methods.confirmResult(price[0], parseInt(Date.now()/1000), orderInfo.amount).send(Object.assign(contractParams, {nonce: nonce}))
+        let receipt = await orderContract.methods.confirmResult(req.price, parseInt(Date.now()/1000)).send(Object.assign(contractParams, {nonce: nonce}))
         console.log("Confirm txHash: ", receipt.transactionHash)
         return receipt
     } catch (err) {
+        return err.message
+    }
+}
+
+exports.getOrderByAddress = async(req) =>{
+    let contract = new Contract(orderAbi, req.orderAdr)
+    let nonce = await getNonce(fxceCfg.contractOwnerAddr)
+    try {
+        let receipt = await contract.methods.getOrderInfo(req.orderAdr).call()
+        console.log("Asset info: ", receipt)
+        return receipt
+    } catch (err) {
+        console.log("Error get asset: ", err.message)
+        return err.message
+    }
+}
+
+exports.getOrderBalance = async(req) =>{
+    let contract = new Contract(orderAbi, req.orderAdr)
+    let nonce = await getNonce(fxceCfg.contractOwnerAddr)
+    try {
+        let resp = await contract.methods.getBalance().call()
+        return resp
+    } catch (err) {
+        console.log("Error get asset: ", err.message)
         return err.message
     }
 }

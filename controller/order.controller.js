@@ -3,21 +3,24 @@ const {
     setPriceOrder,
     confirmResult,
     claimProfit,
-    payToPool
+    payToPool,
+    getOrderByAddress,
+    getOrderBalance
 } = require('../service/order.service')
 const { logger } = require('../config/logger');
 
 exports.createOrder = async(req, res, next) =>{
     try {
         let request = {
-            orderId: req.body.orderId,
+            assetAddress: req.body.assetAddress,
             symbol: req.body.symbol,
-            challengeId: req.body.challengeId,
-            score: req.body.score,
-            owner: req.body.owner,
-            side: req.body.side, //int 
-            duration: req.body.duration, //int
-            amount: req.body.amount //int 
+            startPrice: req.body.startPrice,
+            endPrice: req.body.endPrice,
+            openAt: req.body.openAt, //int 
+            closeAt: req.body.closeAt, //int
+            amount: req.body.amount, //int 
+            duration: req.body.duration, 
+            owner: req.body.owner
         }
         let resp = await createOrder(request)
         res.json({
@@ -52,7 +55,8 @@ exports.confirmResult = async(req, res, next) =>{
     try {
         let request = {
             orderContractAddress: req.body.orderContractAddress,
-            symbol: req.body.symbol
+            symbol: req.body.symbol,
+            price: req.body.price
         }
         let resp = await confirmResult(request)
         res.json({
@@ -68,9 +72,8 @@ exports.confirmResult = async(req, res, next) =>{
 exports.claimProfit = async(req, res, next) =>{
     try {
         let request = {
-            orderContractAddress: req.body.orderContractAddress,
-            sender: req.body.sender,
-            amount: req.body.amount
+            orderAdr: req.body.orderAdr,
+            receiver: req.body.receiver,
         }
         let resp = await claimProfit(request)
         res.json({
@@ -96,6 +99,38 @@ exports.payToPool = async(req, res, next) =>{
         })
     } catch (err) {
         logger.info("Pay to pool error: ", err.message)
+        next(err)
+    }
+}
+
+exports.getOrderByAddress = async(req, res, next) =>{
+    try {
+        let request = {
+            orderAdr: req.query.orderAdr,
+        }
+        let resp = await getOrderByAddress(request)
+        res.json({
+            code: 0,
+            data: resp
+        })
+    } catch (err) {
+        logger.info("Get asset by address error: ", err.message)
+        next(err)
+    }
+}
+
+exports.getOrderBalance = async(req, res, next) =>{
+    try {
+        let request = {
+            orderAdr: req.query.orderAdr,
+        }
+        let resp = await getOrderBalance(request)
+        res.json({
+            code: 0,
+            data: resp
+        })
+    } catch (err) {
+        logger.info("Get asset by address error: ", err.message)
         next(err)
     }
 }

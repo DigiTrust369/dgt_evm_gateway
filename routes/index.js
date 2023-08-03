@@ -14,6 +14,6 @@ router.get('/status', (req, res) => res.send('OK'));
  * GET v1/docs
  */
 router.use('/order', orderRoute);
-router.use('/challenge', challengeRoute);
+router.use('/asset', challengeRoute);
 
 module.exports = router;

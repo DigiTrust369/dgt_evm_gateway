@@ -2302,3 +2302,467 @@ Error [ERR_UNHANDLED_ERROR]: Unhandled error. ({
     at self.callback (/Users/apple/fxce/priceFeed/node_modules/request/request.js:185:22)
     at Request.emit (events.js:314:20)
     at Request.EventEmitter.emit (domain.js:483:12)
+2023-07-28T09:21:39.181Z error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1278:16)
+2023-07-28T09:21:39.185Z error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1278:16)
+2023-07-28T09:21:39.186Z error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1278:16)
+2023-07-28T09:21:56.463Z error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1278:16)
+2023-07-28T09:21:56.466Z error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1278:16)
+2023-07-28T09:21:56.467Z error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1278:16)
+2023-07-28T09:38:04.421Z error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1278:16)
+2023-07-28T09:38:04.425Z error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1278:16)
+2023-07-28T09:38:04.427Z error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1278:16)
+2023-07-28T09:38:31.809Z error: uncaughtException: redis is not defined
+ReferenceError: redis is not defined
+    at Object.<anonymous> (/home/michel/pqd/fxce-priceFeed/index.js:5:20)
+    at Module._compile (node:internal/modules/cjs/loader:1191:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1245:10)
+    at Module.load (node:internal/modules/cjs/loader:1069:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:904:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)
+    at node:internal/main/run_main_module:22:47
+2023-07-28T09:38:46.858Z error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1278:16)
+2023-07-28T10:00:27.810Z error: uncaughtException: PollingBlockTracker - encountered an error while attempting to update latest block:
+Error: ETIMEDOUT
+    at Timeout.<anonymous> (/home/michel/pqd/fxce-priceFeed/node_modules/request/request.js:848:19)
+    at listOnTimeout (node:internal/timers:559:17)
+    at processTimers (node:internal/timers:502:7)
+Error: PollingBlockTracker - encountered an error while attempting to update latest block:
+Error: ETIMEDOUT
+    at Timeout.<anonymous> (/home/michel/pqd/fxce-priceFeed/node_modules/request/request.js:848:19)
+    at listOnTimeout (node:internal/timers:559:17)
+    at processTimers (node:internal/timers:502:7)
+    at PollingBlockTracker._performSync (/home/michel/pqd/fxce-priceFeed/node_modules/eth-block-tracker/src/polling.js:51:24)
+2023-07-28T10:16:27.621Z error: uncaughtException: PollingBlockTracker - encountered an error while attempting to update latest block:
+Error: ETIMEDOUT
+    at Timeout.<anonymous> (/home/michel/pqd/fxce-priceFeed/node_modules/request/request.js:848:19)
+    at listOnTimeout (node:internal/timers:559:17)
+    at processTimers (node:internal/timers:502:7)
+Error: PollingBlockTracker - encountered an error while attempting to update latest block:
+Error: ETIMEDOUT
+    at Timeout.<anonymous> (/home/michel/pqd/fxce-priceFeed/node_modules/request/request.js:848:19)
+    at listOnTimeout (node:internal/timers:559:17)
+    at processTimers (node:internal/timers:502:7)
+    at PollingBlockTracker._performSync (/home/michel/pqd/fxce-priceFeed/node_modules/eth-block-tracker/src/polling.js:51:24)
+2023-07-28T10:16:27.623Z error: uncaughtException: PollingBlockTracker - encountered an error while attempting to update latest block:
+Error: ETIMEDOUT
+    at Timeout.<anonymous> (/home/michel/pqd/fxce-priceFeed/node_modules/request/request.js:848:19)
+    at listOnTimeout (node:internal/timers:559:17)
+    at processTimers (node:internal/timers:502:7)
+Error: PollingBlockTracker - encountered an error while attempting to update latest block:
+Error: ETIMEDOUT
+    at Timeout.<anonymous> (/home/michel/pqd/fxce-priceFeed/node_modules/request/request.js:848:19)
+    at listOnTimeout (node:internal/timers:559:17)
+    at processTimers (node:internal/timers:502:7)
+    at PollingBlockTracker._performSync (/home/michel/pqd/fxce-priceFeed/node_modules/eth-block-tracker/src/polling.js:51:24)
+2023-07-28T10:16:27.624Z error: uncaughtException: PollingBlockTracker - encountered an error while attempting to update latest block:
+Error: ETIMEDOUT
+    at Timeout.<anonymous> (/home/michel/pqd/fxce-priceFeed/node_modules/request/request.js:848:19)
+    at listOnTimeout (node:internal/timers:559:17)
+    at processTimers (node:internal/timers:502:7)
+Error: PollingBlockTracker - encountered an error while attempting to update latest block:
+Error: ETIMEDOUT
+    at Timeout.<anonymous> (/home/michel/pqd/fxce-priceFeed/node_modules/request/request.js:848:19)
+    at listOnTimeout (node:internal/timers:559:17)
+    at processTimers (node:internal/timers:502:7)
+    at PollingBlockTracker._performSync (/home/michel/pqd/fxce-priceFeed/node_modules/eth-block-tracker/src/polling.js:51:24)
+2023-07-29T03:16:24.846Z info: Create order error: 
+2023-07-29T03:17:31.129Z info: Create order error: 
+2023-07-29T03:24:24.269Z info: Create order error: 
+2023-07-29T03:25:56.664Z info: Create order error: 
+2023-07-29T03:26:14.232Z info: Create order error: 
+2023-07-29T03:27:13.894Z info: Create order error: 
+2023-07-29T03:27:57.208Z info: Create order error: 
+2023-07-29T03:29:11.820Z info: Create order error: 
+2023-07-29T03:29:43.391Z info: Create order error: 
+2023-07-29T03:30:03.771Z info: Create order error: 
+2023-07-29T03:30:35.737Z info: Create order error: 
+2023-07-29T03:31:41.539Z info: Create order error: 
+2023-07-29T03:41:00.338Z info: Create order error: 
+2023-07-29T03:41:35.864Z info: Create order error: 
+2023-07-29T03:42:05.477Z info: Create order error: 
+2023-07-29T03:44:01.972Z info: Create order error: 
+2023-07-29T03:44:34.831Z info: Create order error: 
+2023-07-29T03:45:38.010Z info: Create order error: 
+2023-07-29T03:46:14.977Z info: Create order error: 
+2023-07-29T03:46:37.904Z info: Create order error: 
+2023-07-29T03:46:57.062Z info: Create order error: 
+2023-07-29T03:47:11.754Z info: Create order error: 
+2023-07-29T03:47:25.628Z info: Create order error: 
+2023-07-29T03:48:00.086Z info: Create order error: 
+2023-07-29T03:48:14.059Z info: Create order error: 
+2023-07-29T03:48:33.168Z info: Create order error: 
+2023-07-29T04:01:02.353Z info: Create order error: 
+2023-07-29T05:55:58.508Z error: uncaughtException: PollingBlockTracker - encountered an error while attempting to update latest block:
+Error: ETIMEDOUT
+    at Timeout.<anonymous> (/home/michel/pqd/fxce-priceFeed/node_modules/request/request.js:848:19)
+    at listOnTimeout (node:internal/timers:559:17)
+    at processTimers (node:internal/timers:502:7)
+Error: PollingBlockTracker - encountered an error while attempting to update latest block:
+Error: ETIMEDOUT
+    at Timeout.<anonymous> (/home/michel/pqd/fxce-priceFeed/node_modules/request/request.js:848:19)
+    at listOnTimeout (node:internal/timers:559:17)
+    at processTimers (node:internal/timers:502:7)
+    at PollingBlockTracker._performSync (/home/michel/pqd/fxce-priceFeed/node_modules/eth-block-tracker/src/polling.js:51:24)
+2023-07-29T13:29:52.403Z error: uncaughtException: PollingBlockTracker - encountered an error while attempting to update latest block:
+Error: ETIMEDOUT
+    at Timeout.<anonymous> (/home/michel/pqd/fxce-priceFeed/node_modules/request/request.js:848:19)
+    at listOnTimeout (node:internal/timers:559:17)
+    at processTimers (node:internal/timers:502:7)
+Error: PollingBlockTracker - encountered an error while attempting to update latest block:
+Error: ETIMEDOUT
+    at Timeout.<anonymous> (/home/michel/pqd/fxce-priceFeed/node_modules/request/request.js:848:19)
+    at listOnTimeout (node:internal/timers:559:17)
+    at processTimers (node:internal/timers:502:7)
+    at PollingBlockTracker._performSync (/home/michel/pqd/fxce-priceFeed/node_modules/eth-block-tracker/src/polling.js:51:24)
+2023-07-31T02:25:03.504Z info: Create order error: 
+2023-07-31T02:26:34.096Z info: Create order error: 
+2023-07-31T02:29:09.327Z info: Create order error: 
+2023-07-31T02:30:22.402Z error: uncaughtException: PollingBlockTracker - encountered an error while attempting to update latest block:
+Error: ESOCKETTIMEDOUT
+    at ClientRequest.<anonymous> (/home/michel/pqd/fxce-priceFeed/node_modules/request/request.js:816:19)
+    at Object.onceWrapper (node:events:627:28)
+    at ClientRequest.emit (node:events:513:28)
+    at ClientRequest.emit (node:domain:489:12)
+    at TLSSocket.emitRequestTimeout (node:_http_client:839:9)
+    at Object.onceWrapper (node:events:627:28)
+    at TLSSocket.emit (node:events:525:35)
+    at TLSSocket.emit (node:domain:489:12)
+    at TLSSocket.Socket._onTimeout (node:net:550:8)
+    at listOnTimeout (node:internal/timers:559:17)
+    at processTimers (node:internal/timers:502:7)
+Error: PollingBlockTracker - encountered an error while attempting to update latest block:
+Error: ESOCKETTIMEDOUT
+    at ClientRequest.<anonymous> (/home/michel/pqd/fxce-priceFeed/node_modules/request/request.js:816:19)
+    at Object.onceWrapper (node:events:627:28)
+    at ClientRequest.emit (node:events:513:28)
+    at ClientRequest.emit (node:domain:489:12)
+    at TLSSocket.emitRequestTimeout (node:_http_client:839:9)
+    at Object.onceWrapper (node:events:627:28)
+    at TLSSocket.emit (node:events:525:35)
+    at TLSSocket.emit (node:domain:489:12)
+    at TLSSocket.Socket._onTimeout (node:net:550:8)
+    at listOnTimeout (node:internal/timers:559:17)
+    at processTimers (node:internal/timers:502:7)
+    at PollingBlockTracker._performSync (/home/michel/pqd/fxce-priceFeed/node_modules/eth-block-tracker/src/polling.js:51:24)
+2023-07-31T02:35:10.057Z info: Create order error: 
+2023-07-31T02:37:34.241Z info: Create order error: 
+2023-07-31T02:38:27.251Z info: Create order error: 
+2023-07-31T02:38:41.764Z info: Create order error: 
+2023-07-31T02:38:55.788Z info: Create order error: 
+2023-07-31T02:39:08.162Z info: Create order error: 
+2023-07-31T02:39:19.696Z info: Create order error: 
+2023-07-31T03:11:11.727Z info: Get asset by address error: 
+2023-07-31T03:11:44.018Z info: Get asset by address error: 
+2023-07-31T03:11:59.922Z info: Get asset by address error: 
+2023-07-31T03:21:09.695Z error: uncaughtException: PollingBlockTracker - encountered an error while attempting to update latest block:
+Error: ETIMEDOUT
+    at Timeout.<anonymous> (/home/michel/pqd/fxce-priceFeed/node_modules/request/request.js:848:19)
+    at listOnTimeout (node:internal/timers:559:17)
+    at processTimers (node:internal/timers:502:7)
+Error: PollingBlockTracker - encountered an error while attempting to update latest block:
+Error: ETIMEDOUT
+    at Timeout.<anonymous> (/home/michel/pqd/fxce-priceFeed/node_modules/request/request.js:848:19)
+    at listOnTimeout (node:internal/timers:559:17)
+    at processTimers (node:internal/timers:502:7)
+    at PollingBlockTracker._performSync (/home/michel/pqd/fxce-priceFeed/node_modules/eth-block-tracker/src/polling.js:51:24)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+2023-07-31T03:26:04.653Z error: uncaughtException: Unhandled error. ({
+  code: -32603,
+  message: 'ESOCKETTIMEDOUT',
+  data: { originalError: { code: 'ESOCKETTIMEDOUT', connect: false } },
+  stack: 'Error: ESOCKETTIMEDOUT\n' +
+    '    at ClientRequest.<anonymous> (/home/michel/pqd/fxce-priceFeed/node_modules/request/request.js:816:19)\n' +
+    '    at Object.onceWrapper (node:events:627:28)\n' +
+    '    at ClientRequest.emit (node:events:513:28)\n' +
+    '    at ClientRequest.emit (node:domain:489:12)\n' +
+    '    at TLSSocket.emitRequestTimeout (node:_http_client:839:9)\n' +
+    '    at Object.onceWrapper (node:events:627:28)\n' +
+    '    at TLSSocket.emit (node:events:525:35)\n' +
+    '    at TLSSocket.emit (node:domain:489:12)\n' +
+    '    at TLSSocket.Socket._onTimeout (node:net:550:8)\n' +
+    '    at listOnTimeout (node:internal/timers:559:17)\n' +
+    '    at processTimers (node:internal/timers:502:7)'
+})
+Error [ERR_UNHANDLED_ERROR]: Unhandled error. ({
+  code: -32603,
+  message: 'ESOCKETTIMEDOUT',
+  data: { originalError: { code: 'ESOCKETTIMEDOUT', connect: false } },
+  stack: 'Error: ESOCKETTIMEDOUT\n' +
+    '    at ClientRequest.<anonymous> (/home/michel/pqd/fxce-priceFeed/node_modules/request/request.js:816:19)\n' +
+    '    at Object.onceWrapper (node:events:627:28)\n' +
+    '    at ClientRequest.emit (node:events:513:28)\n' +
+    '    at ClientRequest.emit (node:domain:489:12)\n' +
+    '    at TLSSocket.emitRequestTimeout (node:_http_client:839:9)\n' +
+    '    at Object.onceWrapper (node:events:627:28)\n' +
+    '    at TLSSocket.emit (node:events:525:35)\n' +
+    '    at TLSSocket.emit (node:domain:489:12)\n' +
+    '    at TLSSocket.Socket._onTimeout (node:net:550:8)\n' +
+    '    at listOnTimeout (node:internal/timers:559:17)\n' +
+    '    at processTimers (node:internal/timers:502:7)'
+})
+    at new NodeError (node:internal/errors:387:5)
+    at Web3ProviderEngine.emit (node:events:502:17)
+    at Web3ProviderEngine.emit (node:domain:489:12)
+    at /home/michel/pqd/fxce-priceFeed/node_modules/@trufflesuite/web3-provider-engine/index.js:57:14
+    at afterRequest (/home/michel/pqd/fxce-priceFeed/node_modules/@trufflesuite/web3-provider-engine/index.js:151:21)
+    at /home/michel/pqd/fxce-priceFeed/node_modules/@trufflesuite/web3-provider-engine/index.js:176:21
+    at /home/michel/pqd/fxce-priceFeed/node_modules/@trufflesuite/web3-provider-engine/index.js:238:9
+    at /home/michel/pqd/fxce-priceFeed/node_modules/async/internal/once.js:12:16
+    at replenish (/home/michel/pqd/fxce-priceFeed/node_modules/async/internal/eachOfLimit.js:61:25)
+    at /home/michel/pqd/fxce-priceFeed/node_modules/async/internal/eachOfLimit.js:71:9
+    at eachLimit (/home/michel/pqd/fxce-priceFeed/node_modules/async/eachLimit.js:43:36)
+    at /home/michel/pqd/fxce-priceFeed/node_modules/async/internal/doLimit.js:9:16
+    at end (/home/michel/pqd/fxce-priceFeed/node_modules/@trufflesuite/web3-provider-engine/index.js:217:5)
+    at Request._callback (/home/michel/pqd/fxce-priceFeed/node_modules/@trufflesuite/web3-provider-engine/subproviders/rpc.js:36:21)
+    at self.callback (/home/michel/pqd/fxce-priceFeed/node_modules/request/request.js:185:22)
+    at Request.emit (node:events:513:28)
+2023-07-31T08:41:25.717Z error: uncaughtException: PollingBlockTracker - encountered an error while attempting to update latest block:
+Error: ETIMEDOUT
+    at Timeout.<anonymous> (/home/michel/pqd/fxce-priceFeed/node_modules/request/request.js:848:19)
+    at listOnTimeout (node:internal/timers:559:17)
+    at processTimers (node:internal/timers:502:7)
+Error: PollingBlockTracker - encountered an error while attempting to update latest block:
+Error: ETIMEDOUT
+    at Timeout.<anonymous> (/home/michel/pqd/fxce-priceFeed/node_modules/request/request.js:848:19)
+    at listOnTimeout (node:internal/timers:559:17)
+    at processTimers (node:internal/timers:502:7)
+    at PollingBlockTracker._performSync (/home/michel/pqd/fxce-priceFeed/node_modules/eth-block-tracker/src/polling.js:51:24)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+2023-07-31T10:11:16.006Z error: uncaughtException: PollingBlockTracker - encountered an error while attempting to update latest block:
+Error: ETIMEDOUT
+    at Timeout.<anonymous> (/home/michel/pqd/fxce-priceFeed/node_modules/request/request.js:848:19)
+    at listOnTimeout (node:internal/timers:559:17)
+    at processTimers (node:internal/timers:502:7)
+Error: PollingBlockTracker - encountered an error while attempting to update latest block:
+Error: ETIMEDOUT
+    at Timeout.<anonymous> (/home/michel/pqd/fxce-priceFeed/node_modules/request/request.js:848:19)
+    at listOnTimeout (node:internal/timers:559:17)
+    at processTimers (node:internal/timers:502:7)
+    at PollingBlockTracker._performSync (/home/michel/pqd/fxce-priceFeed/node_modules/eth-block-tracker/src/polling.js:51:24)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+2023-08-01T03:31:12.712Z error: uncaughtException: PollingBlockTracker - encountered an error while attempting to update latest block:
+Error: ETIMEDOUT
+    at Timeout.<anonymous> (/home/michel/pqd/fxce-priceFeed/node_modules/request/request.js:848:19)
+    at listOnTimeout (node:internal/timers:559:17)
+    at processTimers (node:internal/timers:502:7)
+Error: PollingBlockTracker - encountered an error while attempting to update latest block:
+Error: ETIMEDOUT
+    at Timeout.<anonymous> (/home/michel/pqd/fxce-priceFeed/node_modules/request/request.js:848:19)
+    at listOnTimeout (node:internal/timers:559:17)
+    at processTimers (node:internal/timers:502:7)
+    at PollingBlockTracker._performSync (/home/michel/pqd/fxce-priceFeed/node_modules/eth-block-tracker/src/polling.js:51:24)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+2023-08-01T03:41:00.303Z error: uncaughtException: Unhandled error. ({
+  code: -32603,
+  message: 'ETIMEDOUT',
+  data: { originalError: { code: 'ETIMEDOUT', connect: true } },
+  stack: 'Error: ETIMEDOUT\n' +
+    '    at Timeout.<anonymous> (/home/michel/pqd/fxce-priceFeed/node_modules/request/request.js:848:19)\n' +
+    '    at listOnTimeout (node:internal/timers:559:17)\n' +
+    '    at processTimers (node:internal/timers:502:7)'
+})
+Error [ERR_UNHANDLED_ERROR]: Unhandled error. ({
+  code: -32603,
+  message: 'ETIMEDOUT',
+  data: { originalError: { code: 'ETIMEDOUT', connect: true } },
+  stack: 'Error: ETIMEDOUT\n' +
+    '    at Timeout.<anonymous> (/home/michel/pqd/fxce-priceFeed/node_modules/request/request.js:848:19)\n' +
+    '    at listOnTimeout (node:internal/timers:559:17)\n' +
+    '    at processTimers (node:internal/timers:502:7)'
+})
+    at new NodeError (node:internal/errors:387:5)
+    at Web3ProviderEngine.emit (node:events:502:17)
+    at Web3ProviderEngine.emit (node:domain:489:12)
+    at /home/michel/pqd/fxce-priceFeed/node_modules/@trufflesuite/web3-provider-engine/index.js:57:14
+    at afterRequest (/home/michel/pqd/fxce-priceFeed/node_modules/@trufflesuite/web3-provider-engine/index.js:151:21)
+    at /home/michel/pqd/fxce-priceFeed/node_modules/@trufflesuite/web3-provider-engine/index.js:176:21
+    at /home/michel/pqd/fxce-priceFeed/node_modules/@trufflesuite/web3-provider-engine/index.js:238:9
+    at /home/michel/pqd/fxce-priceFeed/node_modules/async/internal/once.js:12:16
+    at replenish (/home/michel/pqd/fxce-priceFeed/node_modules/async/internal/eachOfLimit.js:61:25)
+    at /home/michel/pqd/fxce-priceFeed/node_modules/async/internal/eachOfLimit.js:71:9
+    at eachLimit (/home/michel/pqd/fxce-priceFeed/node_modules/async/eachLimit.js:43:36)
+    at /home/michel/pqd/fxce-priceFeed/node_modules/async/internal/doLimit.js:9:16
+    at end (/home/michel/pqd/fxce-priceFeed/node_modules/@trufflesuite/web3-provider-engine/index.js:217:5)
+    at Request._callback (/home/michel/pqd/fxce-priceFeed/node_modules/@trufflesuite/web3-provider-engine/subproviders/rpc.js:36:21)
+    at self.callback (/home/michel/pqd/fxce-priceFeed/node_modules/request/request.js:185:22)
+    at Request.emit (node:events:513:28)
+2023-08-01T12:48:18.137Z error: uncaughtException: EACCES: permission denied, open '/home/michel/pqd/fxce-priceFeed/certs/apache-selfsigned.key'
+Error: EACCES: permission denied, open '/home/michel/pqd/fxce-priceFeed/certs/apache-selfsigned.key'
+    at Object.openSync (node:fs:590:3)
+    at Object.readFileSync (node:fs:458:35)
+    at Object.<anonymous> (/home/michel/pqd/fxce-priceFeed/config/express.js:16:14)
+    at Module._compile (node:internal/modules/cjs/loader:1191:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1245:10)
+    at Module.load (node:internal/modules/cjs/loader:1069:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:904:12)
+    at Module.require (node:internal/modules/cjs/loader:1093:19)
+    at require (node:internal/modules/cjs/helpers:108:18)
+    at Object.<anonymous> (/home/michel/pqd/fxce-priceFeed/index.js:7:16)
+    at Module._compile (node:internal/modules/cjs/loader:1191:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1245:10)
+    at Module.load (node:internal/modules/cjs/loader:1069:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:904:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)
+    at node:internal/main/run_main_module:22:47
+2023-08-01T12:49:09.432Z error: uncaughtException: EACCES: permission denied, open '/home/michel/pqd/fxce-priceFeed/certs/apache-selfsigned.key'
+Error: EACCES: permission denied, open '/home/michel/pqd/fxce-priceFeed/certs/apache-selfsigned.key'
+    at Object.openSync (node:fs:590:3)
+    at Object.readFileSync (node:fs:458:35)
+    at Object.<anonymous> (/home/michel/pqd/fxce-priceFeed/config/express.js:16:14)
+    at Module._compile (node:internal/modules/cjs/loader:1191:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1245:10)
+    at Module.load (node:internal/modules/cjs/loader:1069:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:904:12)
+    at Module.require (node:internal/modules/cjs/loader:1093:19)
+    at require (node:internal/modules/cjs/helpers:108:18)
+    at Object.<anonymous> (/home/michel/pqd/fxce-priceFeed/index.js:7:16)
+    at Module._compile (node:internal/modules/cjs/loader:1191:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1245:10)
+    at Module.load (node:internal/modules/cjs/loader:1069:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:904:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)
+    at node:internal/main/run_main_module:22:47
+2023-08-01T12:50:03.490Z error: uncaughtException: EACCES: permission denied, open '/home/michel/pqd/fxce-priceFeed/certs/apache-selfsigned.key'
+Error: EACCES: permission denied, open '/home/michel/pqd/fxce-priceFeed/certs/apache-selfsigned.key'
+    at Object.openSync (node:fs:590:3)
+    at Object.readFileSync (node:fs:458:35)
+    at Object.<anonymous> (/home/michel/pqd/fxce-priceFeed/config/express.js:16:14)
+    at Module._compile (node:internal/modules/cjs/loader:1191:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1245:10)
+    at Module.load (node:internal/modules/cjs/loader:1069:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:904:12)
+    at Module.require (node:internal/modules/cjs/loader:1093:19)
+    at require (node:internal/modules/cjs/helpers:108:18)
+    at Object.<anonymous> (/home/michel/pqd/fxce-priceFeed/index.js:7:16)
+    at Module._compile (node:internal/modules/cjs/loader:1191:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1245:10)
+    at Module.load (node:internal/modules/cjs/loader:1069:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:904:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)
+    at node:internal/main/run_main_module:22:47
+2023-08-01T12:50:34.711Z error: uncaughtException: app is not defined
+ReferenceError: app is not defined
+    at Object.<anonymous> (/home/michel/pqd/fxce-priceFeed/index.js:39:18)
+    at Module._compile (node:internal/modules/cjs/loader:1191:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1245:10)
+    at Module.load (node:internal/modules/cjs/loader:1069:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:904:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)
+    at node:internal/main/run_main_module:22:47
+2023-08-01T12:57:00.042Z error: uncaughtException: EACCES: permission denied, open '/home/michel/pqd/fxce-priceFeed/certs/apache-selfsigned.key'
+Error: EACCES: permission denied, open '/home/michel/pqd/fxce-priceFeed/certs/apache-selfsigned.key'
+    at Object.openSync (node:fs:590:3)
+    at Object.readFileSync (node:fs:458:35)
+    at Object.<anonymous> (/home/michel/pqd/fxce-priceFeed/config/express.js:16:14)
+    at Module._compile (node:internal/modules/cjs/loader:1191:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1245:10)
+    at Module.load (node:internal/modules/cjs/loader:1069:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:904:12)
+    at Module.require (node:internal/modules/cjs/loader:1093:19)
+    at require (node:internal/modules/cjs/helpers:108:18)
+    at Object.<anonymous> (/home/michel/pqd/fxce-priceFeed/index.js:7:16)
+    at Module._compile (node:internal/modules/cjs/loader:1191:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1245:10)
+    at Module.load (node:internal/modules/cjs/loader:1069:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:904:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)
+    at node:internal/main/run_main_module:22:47
+2023-08-01T13:01:12.419Z error: uncaughtException: https.listen is not a function
+TypeError: https.listen is not a function
+    at Object.<anonymous> (/home/michel/pqd/fxce-priceFeed/config/express.js:72:7)
+    at Module._compile (node:internal/modules/cjs/loader:1191:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1245:10)
+    at Module.load (node:internal/modules/cjs/loader:1069:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:904:12)
+    at Module.require (node:internal/modules/cjs/loader:1093:19)
+    at require (node:internal/modules/cjs/helpers:108:18)
+    at Object.<anonymous> (/home/michel/pqd/fxce-priceFeed/index.js:7:16)
+    at Module._compile (node:internal/modules/cjs/loader:1191:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1245:10)
+    at Module.load (node:internal/modules/cjs/loader:1069:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:904:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)
+    at node:internal/main/run_main_module:22:47
+2023-08-01T13:05:22.371Z error: uncaughtException: https.listen is not a function
+TypeError: https.listen is not a function
+    at Object.<anonymous> (/home/michel/pqd/fxce-priceFeed/config/express.js:72:7)
+    at Module._compile (node:internal/modules/cjs/loader:1191:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1245:10)
+    at Module.load (node:internal/modules/cjs/loader:1069:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:904:12)
+    at Module.require (node:internal/modules/cjs/loader:1093:19)
+    at require (node:internal/modules/cjs/helpers:108:18)
+    at Object.<anonymous> (/home/michel/pqd/fxce-priceFeed/index.js:7:16)
+    at Module._compile (node:internal/modules/cjs/loader:1191:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1245:10)
+    at Module.load (node:internal/modules/cjs/loader:1069:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:904:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)
+    at node:internal/main/run_main_module:22:47
+2023-08-01T13:08:38.070Z error: uncaughtException: EACCES: permission denied, open '/home/michel/pqd/fxce-priceFeed/certs/apache-selfsigned.key'
+Error: EACCES: permission denied, open '/home/michel/pqd/fxce-priceFeed/certs/apache-selfsigned.key'
+    at Object.openSync (node:fs:590:3)
+    at Object.readFileSync (node:fs:458:35)
+    at Object.<anonymous> (/home/michel/pqd/fxce-priceFeed/config/express.js:16:14)
+    at Module._compile (node:internal/modules/cjs/loader:1191:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1245:10)
+    at Module.load (node:internal/modules/cjs/loader:1069:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:904:12)
+    at Module.require (node:internal/modules/cjs/loader:1093:19)
+    at require (node:internal/modules/cjs/helpers:108:18)
+    at Object.<anonymous> (/home/michel/pqd/fxce-priceFeed/index.js:7:16)
+    at Module._compile (node:internal/modules/cjs/loader:1191:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1245:10)
+    at Module.load (node:internal/modules/cjs/loader:1069:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:904:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)
+    at node:internal/main/run_main_module:22:47
+2023-08-01T13:21:51.435Z error: uncaughtException: PollingBlockTracker - encountered an error while attempting to update latest block:
+Error: ETIMEDOUT
+    at Timeout.<anonymous> (/home/michel/pqd/fxce-priceFeed/node_modules/request/request.js:848:19)
+    at listOnTimeout (node:internal/timers:559:17)
+    at processTimers (node:internal/timers:502:7)
+Error: PollingBlockTracker - encountered an error while attempting to update latest block:
+Error: ETIMEDOUT
+    at Timeout.<anonymous> (/home/michel/pqd/fxce-priceFeed/node_modules/request/request.js:848:19)
+    at listOnTimeout (node:internal/timers:559:17)
+    at processTimers (node:internal/timers:502:7)
+    at PollingBlockTracker._performSync (/home/michel/pqd/fxce-priceFeed/node_modules/eth-block-tracker/src/polling.js:51:24)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+2023-08-01T14:17:03.746Z error: uncaughtException: PollingBlockTracker - encountered an error while attempting to update latest block:
+Error: ETIMEDOUT
+    at Timeout.<anonymous> (/home/michel/pqd/fxce-priceFeed/node_modules/request/request.js:848:19)
+    at listOnTimeout (node:internal/timers:559:17)
+    at processTimers (node:internal/timers:502:7)
+Error: PollingBlockTracker - encountered an error while attempting to update latest block:
+Error: ETIMEDOUT
+    at Timeout.<anonymous> (/home/michel/pqd/fxce-priceFeed/node_modules/request/request.js:848:19)
+    at listOnTimeout (node:internal/timers:559:17)
+    at processTimers (node:internal/timers:502:7)
+    at PollingBlockTracker._performSync (/home/michel/pqd/fxce-priceFeed/node_modules/eth-block-tracker/src/polling.js:51:24)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)

@@ -14,6 +14,8 @@ const {getNonce} = require('./priceFeed_service')
 const gasPrice = '5000000000'
 const maxErc20GasLimit = 500000
 const challengeAbi = require("../abi/challengeAbi.json");
+const assetAbi = require("../abi/assetAbi.json");
+
 const provider = new HDWalletProvider({ 
     privateKeys: [fxceCfg.contractOwnerPriv], 
     providerOrUrl: fxceCfg.providerUrl,
@@ -22,8 +24,8 @@ const provider = new HDWalletProvider({
 
 const contractParams = {
     from    : fxceCfg.contractOwnerAddr,
-    gasPrice: gasPrice,
-    gas     : maxErc20GasLimit
+    gasPrice: 10000000000,
+    gasLimit: 12354599,
 };
 
 Contract.setProvider(provider)
@@ -45,12 +47,13 @@ exports.createChallenge = async (req)=>{
 }
 
 exports.withDraw = async(req) =>{
-    let contract = new Contract(challengeAbi, fxceCfg.fxceChallengeAddress)
+    let contract = new Contract(assetAbi, fxceCfg.fxceChallengeAddress)
     let nonce = await getNonce(fxceCfg.contractOwnerAddr)
     try {
-        let receipt = await contract.methods.withdrawChallenge(req.sender, req.amount, req.challengeId).send(Object.assign(contractParams, {nonce: nonce}))
+        let receipt = await contract.methods.withdrawAsset(req.sender, req.amount).send(Object.assign(contractParams, {nonce: nonce}))
         return receipt
     } catch (err) {
+        console.log("withdraw asset err: ", err.message)
         return err.message
     }
 }
@@ -94,6 +97,19 @@ exports.getChallengeById = async(req) =>{
         console.log("Challenge info: ", receipt)
         return receipt
     } catch (err) {
+        return err.message
+    }
+}
+
+exports.getAssetByAddress = async(req) =>{
+    let contract = new Contract(assetAbi, req.assetAddress)
+    let nonce = await getNonce(fxceCfg.contractOwnerAddr)
+    try {
+        let receipt = await contract.methods.getChallengeInfo().call()
+        console.log("Asset info: ", receipt)
+        return receipt
+    } catch (err) {
+        console.log("Error get asset: ", err.message)
         return err.message
     }
 }

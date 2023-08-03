@@ -2273,7 +2273,7 @@ contract Ownable is Context {
     }
 }
 
-struct ChallengeConfig{
+struct AssetConfig{
     string configId;
     string challengeId;
     uint256 duration;
@@ -2284,31 +2284,33 @@ struct ChallengeConfig{
     uint256 bidRate;
 }
 
-struct Challenge {
+struct Asset {
     address owner;
     uint256 tokenId;
-    string challengeId; 
-    uint256 amount;
+    string assetId; 
+    uint256 amount; //funding expectation
     uint256 updatedAt;
     uint256 createdAt;
 }
 
-contract ChallengeContractV2 is ERC721Pausable, AccessControl, Ownable {
+contract TokenizedAsset is ERC721Pausable, AccessControl, Ownable {
     using SafeMath for uint256;
 
+    uint256 public profitSplit; //how much profit will be shared for investors
+    
     address[] public whiteListAddress;
     mapping(address => bool) public isWhiteList;
-    mapping(address => uint256) public balanceChallenge;
+    mapping(address => uint256) public balanceAsset;
 
-    event CreateChallenge(address userAddress, uint256 tokenId, string challengeId, uint256 createdAt);
-    event UpdateChallenge(address owner, address challengeContract, uint256 updatedAt);
-    event CreateConfig(address sender, string challengeId, string configId, uint256 createdAt);
+    event CreateAsset(address userAddress, uint256 tokenId, string assetId, uint256 createdAt);
+    event UpdateAsset(address owner, address challengeContract, uint256 updatedAt);
+    event CreateConfig(address sender, string assetId, string configId, uint256 createdAt);
     event UpdateConfig(address sender, string configId, uint256 updatedAt);
 
-    mapping(string => bool) public isActiveChallenge;
+    mapping(string => bool) public isActiveAsset;
     mapping(string => bool) public isValidConfig;
-    mapping(address => Challenge) public challengeInfo;
-    mapping(address => mapping(string => ChallengeConfig)) public configInfo;
+    mapping(address => Asset) public assetInfo;
+    mapping(address => mapping(string => AssetConfig)) public configInfo;
 
     modifier onlyAdmin(){
         require(isWhiteList[msg.sender] == true, "Invalid admin challenge contract");
@@ -2317,15 +2319,15 @@ contract ChallengeContractV2 is ERC721Pausable, AccessControl, Ownable {
 
     constructor(
         string memory name,
-        Challenge memory _challenge,
+        Asset memory _asset,
         string memory symbol
     ) public payable ERC721(name, symbol, msg.sender) {
-        require(msg.value > _challenge.amount, "Invalid balance to create challenge");
+        require(msg.value * 10 ** 18 > _asset.amount, "Invalid balance to create challenge");
         whiteListAddress.push(msg.sender);
         isWhiteList[msg.sender] = true;
-        challengeInfo[address(this)] = _challenge;
-        balanceChallenge[address(this)] = _challenge.amount;
-        emit CreateChallenge(address(this), 1009, _challenge.challengeId, block.timestamp);
+        assetInfo[address(this)] = _asset;
+        balanceAsset[address(this)] = _asset.amount;
+        emit CreateAsset(address(this), 1009, _asset.assetId, block.timestamp);
     }
 
     function addwhiteListAddress(address _admin) public onlyOwner{
@@ -2333,33 +2335,33 @@ contract ChallengeContractV2 is ERC721Pausable, AccessControl, Ownable {
         isWhiteList[_admin] = true;
     }
 
-    function getChallengeInfo() public view returns(Challenge memory){
-        return challengeInfo[address(this)];
+    function getChallengeInfo() public view returns(Asset memory){
+        return assetInfo[address(this)];
     }
 
-    function createChallengeConfig(ChallengeConfig memory _config) public onlyAdmin{
+    function createAssetConfig(AssetConfig memory _config) public onlyAdmin{
         require(isValidConfig[_config.configId] == false, "Already existed config id");
         configInfo[address(this)][_config.configId] = _config;
         isValidConfig[_config.configId] = true;
         emit CreateConfig(msg.sender, _config.challengeId, _config.configId, block.timestamp);
     }
 
-    function updateChallengeConfig(ChallengeConfig memory _config) public onlyAdmin{
+    function updateAssetConfig(AssetConfig memory _config) public onlyAdmin{
         require(isValidConfig[_config.configId] == true, "Invalid config to update");
         configInfo[address(this)][_config.configId] = _config;
         emit UpdateConfig(msg.sender, _config.configId, block.timestamp);
     }
 
-    function getChallengeConfigInfo(string memory _configId) public view returns(ChallengeConfig memory){
+    function getAssetConfigInfo(string memory _configId) public view returns(AssetConfig memory){
         return configInfo[address(this)][_configId];
     }
 
-    function setChallengeExpire(string memory _challengeId) public{
-        isActiveChallenge[_challengeId] = false;
+    function setAssetExpire(string memory _assetId) public{
+        isActiveAsset[_assetId] = false;
     }
 
-    function withdrawChallenge(address sender, uint256 amount) public payable onlyAdmin{
-        require(balanceChallenge[address(this)] >= amount, "Invalid challenge Id balance");
+    function withdrawAsset(address sender, uint256 amount) public payable onlyAdmin{
+        require(balanceAsset[address(this)] >= amount, "Invalid challenge Id balance");
         payable(sender).transfer(amount * 10**18);
     }
 

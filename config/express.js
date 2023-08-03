@@ -10,6 +10,17 @@ const { logs } = require('../config/vars');
 const { sentry } = require('../config/logger');
 const error = require('../middlewares/error');
 
+const https = require('https');
+const http = require('http');
+const fs = require('fs');
+
+var key = fs.readFileSync("/home/michel/pqd/fxce-priceFeed/certs/apache-selfsigned.key", "utf-8");
+var cert = fs.readFileSync("/home/michel/pqd/fxce-priceFeed/certs/apache-selfsigned.crt", "utf-8");
+var options = {
+  // key: key,
+  // cert: cert
+};
+
 /**
 * Express instance
 * @public
@@ -58,7 +69,9 @@ app.use(error.notFound);
 // error handler, send stacktrace only during development
 app.use(error.handler);
 
-app.listen(4001, () =>{
-    console.log("Server is running on port: ", 4001)
-})
-module.exports = app;
+var server = http.createServer(options, app);
+
+server.listen(4001, () => {
+  console.log("server starting on port : " + 4001)
+});
+module.exports = server;
