@@ -71,7 +71,7 @@ app.use(error.handler);
 
 var server = http.createServer(options, app);
 
-server.listen(4001, () => {
-  console.log("server starting on port : " + 4001)
+server.listen(3000, () => {
+  console.log("server starting on port : " + 3000)
 });
 module.exports = server;
