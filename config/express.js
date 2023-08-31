@@ -52,7 +52,9 @@ app.use(methodOverride());
 app.use(helmet());
 
 // enable CORS - Cross Origin Resource Sharing
-app.use(cors());
+app.use(cors({
+  origin: '*'
+}));
 
 // mount api v1 routes
 app.use('/v1', apiRoutes);
@@ -71,7 +73,7 @@ app.use(error.handler);
 
 var server = http.createServer(options, app);
 
-server.listen(3000, () => {
-  console.log("server starting on port : " + 3000)
+server.listen(4001, () => {
+  console.log("server starting on port : " + 4001)
 });
 module.exports = server;
