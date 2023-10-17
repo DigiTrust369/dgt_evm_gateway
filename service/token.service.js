@@ -14,6 +14,7 @@ exports.setAdminToken = async(req) =>{
         let receipt = await contract.methods.addWhiteListAddress(req.admin).send(Object.assign(contractParams, {nonce: nonce}))
         return receipt
     } catch (err) {
+        console.log("Error set admin: ", err.message)
         return err.message
     }
 }

@@ -2299,19 +2299,6 @@ interface IChallengeCore {
         uint256 _amount
     ) external returns (uint256);
 
-    // function safeMintNFTEx(
-    //     address _address,
-    //     Challenge memory _challenge,
-    //     uint256 _tokenId,
-    //     uint256 challengeId
-    // ) external returns (uint256);
-
-    // function safeMintNFTBundle(
-    //     address _address,
-    //     Challenge[] memory _challenge,
-    //     string[] memory challengeId
-    // ) external returns (uint256);
-
     function getNextTokenId() external view returns (uint256);
 
     function getChallengeById(string memory _challengeId)
@@ -2320,10 +2307,9 @@ interface IChallengeCore {
         returns (Challenge memory);
     
     function getChallengeConfigInfo(string memory _challengeId, string memory _configId) external view returns(string memory, uint256);
-    function transferToOrder(address _order, uint256 _amount) external;
 }
 
-contract ChallengeContract is IChallengeCore, ERC721Pausable, AccessControl, Ownable {
+contract Service is IChallengeCore, ERC721Pausable, AccessControl, Ownable {
     using SafeMath for uint256;
 
     address[] public whiteListAddress;
@@ -2403,53 +2389,10 @@ contract ChallengeContract is IChallengeCore, ERC721Pausable, AccessControl, Own
         fxceToken.transferFrom(address(this), sender, amount * 10**18);
     }
 
-    function claimFee(address sender, uint256 amount) public onlyAdmin{
-        require(fxceToken.balanceOf(address(this)) >= amount * 10**18, "Invalid balance to claim fee");
-        fxceToken.approve(address(this), amount * 10**18);
-        fxceToken.transferFrom(address(this), sender, amount * 10**18);
-    }   
-
-    function transferToOrder(address _order, uint256 amount) external override onlyAdmin{
-        require(fxceToken.balanceOf(address(this)) > amount * 10**18, "Invalid balance to create order");
-        fxceToken.transferFrom(address(this), _order, amount * 10**18);
-    }
-
     function getChallengeConfigInfo(string memory _challengeId, string memory _configId) external view override returns(string memory, uint256){
         ChallengeConfig memory configInfoTemp = configInfo[_challengeId][_configId];
         return (configInfoTemp.symbol, configInfoTemp.duration);
     }
-
-
-    // function safeMintNFTBundle(
-    //     address _addr,
-    //     Challenge[] memory _challenge,
-    //     string[] memory _challengeId
-    // ) external override onlySafeNFT returns (uint256) {
-    //     uint256[] memory challengeIds = _challengeId;
-    //     for (uint256 index = 0; index < _challenge.length; index++) {
-    //         uint256 nextTokenId = latestTokenId.add(1);
-    //         _challenge[index].tokenId = nextTokenId;
-    //         _challenge[index].challengeId = challengeIds[index];
-    //         _mint(_addr, nextTokenId);
-    //         challenges[nextTokenId] = _challenge[index];
-    //         externalChallenges[challengeIds[index]] = nextTokenId;
-    //         emit CreateChallenge(_msgSender(), nextTokenId, challengeIds[index]);
-    //     }
-    // }
-
-    // function safeMintNFTEx(
-    //     address _addr,
-    //     Challenge memory _challenge,
-    //     uint256 _tokenId,
-    //     uint256 _challengeId
-    // ) external override onlySafeNFT returns (uint256) {
-    //     uint256 challengeId = _challengeId;
-    //     _mint(_addr, _tokenId);
-    //     _challenge.challengeId = challengeId;
-    //     challenges[_tokenId] = _challenge;
-    //     externalChallenges[challengeId] = _tokenId;
-    //     emit CreateChallenge(_msgSender(), _tokenId, challengeId);
-    // }
 
     /**
      * @dev calculates the next token ID based on value of latestTokenId

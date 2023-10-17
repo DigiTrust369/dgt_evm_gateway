@@ -7,7 +7,7 @@ let redisClient = redis.createClient(redisUrl)
 
 cron.schedule('*/10 * * * * *', async function() {
     console.log("running a task every 10 second");
-    let pendingOrders = await scanPendingOrder(1);
+    let pendingOrders = await scanPendingOrder("PQD-3");
     for(let i = 0; i < pendingOrders.length; i++){
         order = JSON.parse(pendingOrders[i])
         let latestPrice = await getLatestPrice(order.symbol);
@@ -21,7 +21,7 @@ cron.schedule('*/10 * * * * *', async function() {
         try {
             let resp = await setPriceOrder(reqSetPrice)
             let orderInfo = `{\"orderId\":\"${order.orderId}\",\"symbol\":\"${order.symbol}\",\"createdAt\":${order.createdAt},\"status\":0}`
-            let response = await redisClient.zrem(1, orderInfo)
+            let response = await redisClient.zrem("PQD-3", orderInfo)
             console.log("Resp: ", resp.transactionHash, " -r: ", response)
         } catch (err) {
             console.log(err.message)

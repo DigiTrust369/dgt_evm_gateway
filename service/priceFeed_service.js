@@ -51,8 +51,8 @@ exports.setPriceFeed = async (symbol) =>{
     //set price feed
     try {
         // console.log("Contract param: ", contractPriceFeedParams)
-        pricePair = Math.round(pricePair)
-        let priceFeedResp = await contract.methods.setPrice(symbol, pricePair, 0).send(Object.assign(contractPriceFeedParams))
+        // pricePair = Math.round(pricePair)
+        let priceFeedResp = await contract.methods.setPrice(symbol, 12, 0).send(Object.assign(contractPriceFeedParams))
         return priceFeedResp
     } catch (err) {
         return err.message

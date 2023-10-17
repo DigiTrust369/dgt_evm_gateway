@@ -3,15 +3,20 @@
 		"inputs": [
 			{
 				"internalType": "address",
+				"name": "_fxceToken",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
 				"name": "_feeWallet",
 				"type": "address"
 			},
 			{
 				"components": [
 					{
-						"internalType": "address",
-						"name": "assetAddress",
-						"type": "address"
+						"internalType": "string",
+						"name": "assetId",
+						"type": "string"
 					},
 					{
 						"internalType": "string",
@@ -55,84 +60,12 @@
 			},
 			{
 				"internalType": "address",
-				"name": "_owner",
+				"name": "_priceFeed",
 				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_feeConfig",
-				"type": "uint256"
 			}
 		],
-		"stateMutability": "payable",
+		"stateMutability": "nonpayable",
 		"type": "constructor"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"components": [
-					{
-						"internalType": "address",
-						"name": "assetAddress",
-						"type": "address"
-					},
-					{
-						"internalType": "string",
-						"name": "symbol",
-						"type": "string"
-					},
-					{
-						"internalType": "uint256",
-						"name": "startPrice",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "endPrice",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "openAt",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "closeAt",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "amount",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "duration",
-						"type": "uint256"
-					}
-				],
-				"indexed": true,
-				"internalType": "struct Order",
-				"name": "_order",
-				"type": "tuple"
-			},
-			{
-				"indexed": false,
-				"internalType": "address",
-				"name": "_feeWallet",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "createdAt",
-				"type": "uint256"
-			}
-		],
-		"name": "ChargeFee",
-		"type": "event"
 	},
 	{
 		"anonymous": false,
@@ -146,9 +79,9 @@
 			{
 				"components": [
 					{
-						"internalType": "address",
-						"name": "assetAddress",
-						"type": "address"
+						"internalType": "string",
+						"name": "assetId",
+						"type": "string"
 					},
 					{
 						"internalType": "string",
@@ -213,9 +146,9 @@
 			{
 				"components": [
 					{
-						"internalType": "address",
-						"name": "assetAddress",
-						"type": "address"
+						"internalType": "string",
+						"name": "assetId",
+						"type": "string"
 					},
 					{
 						"internalType": "string",
@@ -278,73 +211,6 @@
 		"anonymous": false,
 		"inputs": [
 			{
-				"components": [
-					{
-						"internalType": "address",
-						"name": "assetAddress",
-						"type": "address"
-					},
-					{
-						"internalType": "string",
-						"name": "symbol",
-						"type": "string"
-					},
-					{
-						"internalType": "uint256",
-						"name": "startPrice",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "endPrice",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "openAt",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "closeAt",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "amount",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "duration",
-						"type": "uint256"
-					}
-				],
-				"indexed": true,
-				"internalType": "struct Order",
-				"name": "_order",
-				"type": "tuple"
-			},
-			{
-				"indexed": false,
-				"internalType": "address",
-				"name": "owner",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "openAt",
-				"type": "uint256"
-			}
-		],
-		"name": "OpenOrder",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
 				"indexed": true,
 				"internalType": "address",
 				"name": "previousOwner",
@@ -366,9 +232,9 @@
 			{
 				"components": [
 					{
-						"internalType": "address",
-						"name": "assetAddress",
-						"type": "address"
+						"internalType": "string",
+						"name": "assetId",
+						"type": "string"
 					},
 					{
 						"internalType": "string",
@@ -439,9 +305,9 @@
 			{
 				"components": [
 					{
-						"internalType": "address",
-						"name": "assetAddress",
-						"type": "address"
+						"internalType": "string",
+						"name": "assetId",
+						"type": "string"
 					},
 					{
 						"internalType": "string",
@@ -501,37 +367,6 @@
 		"type": "event"
 	},
 	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "_sender",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "_receiver",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "amount",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "createdAt",
-				"type": "uint256"
-			}
-		],
-		"name": "WithDraw",
-		"type": "event"
-	},
-	{
 		"inputs": [
 			{
 				"internalType": "address",
@@ -540,32 +375,6 @@
 			}
 		],
 		"name": "addwhiteListAddress",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"name": "balanceOrder",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "chargeFee",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -589,16 +398,16 @@
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "feeConfig",
-		"outputs": [
+		"inputs": [
 			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
+				"internalType": "address",
+				"name": "_owner",
+				"type": "address"
 			}
 		],
-		"stateMutability": "view",
+		"name": "depositOrder",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -616,6 +425,25 @@
 	},
 	{
 		"inputs": [],
+		"name": "fxceToken",
+		"outputs": [
+			{
+				"internalType": "contract IERC20",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "req",
+				"type": "address"
+			}
+		],
 		"name": "getBalance",
 		"outputs": [
 			{
@@ -640,9 +468,9 @@
 			{
 				"components": [
 					{
-						"internalType": "address",
-						"name": "assetAddress",
-						"type": "address"
+						"internalType": "string",
+						"name": "assetId",
+						"type": "string"
 					},
 					{
 						"internalType": "string",
@@ -731,9 +559,9 @@
 		"name": "orderInfo",
 		"outputs": [
 			{
-				"internalType": "address",
-				"name": "assetAddress",
-				"type": "address"
+				"internalType": "string",
+				"name": "assetId",
+				"type": "string"
 			},
 			{
 				"internalType": "string",
@@ -826,6 +654,19 @@
 		"type": "function"
 	},
 	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "payToPool",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"inputs": [],
 		"name": "renounceOwnership",
 		"outputs": [],
@@ -835,12 +676,12 @@
 	{
 		"inputs": [
 			{
-				"internalType": "uint256",
-				"name": "_feeConfig",
-				"type": "uint256"
+				"internalType": "address",
+				"name": "_fxceToken",
+				"type": "address"
 			}
 		],
-		"name": "setFeeConfig",
+		"name": "setFXCEToken",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -912,7 +753,7 @@
 		"inputs": [
 			{
 				"internalType": "address",
-				"name": "_receiver",
+				"name": "sender",
 				"type": "address"
 			}
 		],

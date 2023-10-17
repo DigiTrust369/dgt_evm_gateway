@@ -3,7 +3,7 @@ const challengeController = require('../controller/challenge.controller')
 
 const challengeRouter = express.Router();
 
-challengeRouter.route('/createChallenge').post(challengeController.createChallenge)
+challengeRouter.route('/createAsset').post(challengeController.createChallenge)
 challengeRouter.route('/createAssetConfig').post(challengeController.createChallengeConfig)
 challengeRouter.route('/withdraw').post(challengeController.withDrawAsset)
 // challengeRouter.route('/').get(challengeController.getChallengeById)

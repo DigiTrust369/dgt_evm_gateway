@@ -14,8 +14,8 @@ const https = require('https');
 const http = require('http');
 const fs = require('fs');
 
-var key = fs.readFileSync("/home/michel/pqd/fxce-priceFeed/certs/apache-selfsigned.key", "utf-8");
-var cert = fs.readFileSync("/home/michel/pqd/fxce-priceFeed/certs/apache-selfsigned.crt", "utf-8");
+// var key = fs.readFileSync("/home/michel/pqd/fxce-priceFeed/certs/apache-selfsigned.key", "utf-8");
+// var cert = fs.readFileSync("/home/michel/pqd/fxce-priceFeed/certs/apache-selfsigned.crt", "utf-8");
 var options = {
   // key: key,
   // cert: cert

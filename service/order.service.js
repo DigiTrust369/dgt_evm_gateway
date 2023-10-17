@@ -3,7 +3,7 @@ const bluebird = require('bluebird'); // eslint-disable-line no-global-assign
 const redis = require("redis");
 const Web3 = require('web3')
 const {redisUrl, fxceCfg, contractParams} = require("../config/vars");
-// let redisClient = redis.createClient(redisUrl);
+let redisClient = redis.createClient(redisUrl);
 bluebird.promisifyAll(redis);
 
 //contract config 
@@ -35,10 +35,10 @@ exports.createOrder = async (req) =>{
     let payload = {
         data: orderByteCode.object,
         arguments: [
+            fxceCfg.fxceTokenAddress,
             fxceCfg.contractOwnerAddr, //fee wallet address
-            [req.assetAddress,req.symbol,req.startPrice, req.endPrice, 0, 0,req.amount, req.duration], //order info
-            req.owner, //trader set owner of order
-            0 // fee config
+            [req.assetAddress ,req.symbol, req.startPrice, req.endPrice, 0, 0,req.amount, req.duration], //order info
+            fxceCfg.contractOwnerAddr, //price feed
         ]
     }
     let deployTx =deployContract.deploy(payload)
@@ -46,9 +46,8 @@ exports.createOrder = async (req) =>{
         {
             from: fxceCfg.contractOwnerAddr,
             data: deployTx.encodeABI(),
-            gasPrice: 10000000000,
-            gasLimit: 12354599,
-            value: req.amount
+            gasPrice: 25000000000,
+            gasLimit: 8500000,
         },
         fxceCfg.contractOwnerPriv
     );
@@ -56,27 +55,28 @@ exports.createOrder = async (req) =>{
         createTransaction.rawTransaction
     );
     console.log('Contract deployed at address', createReceipt.contractAddress);
-    return createReceipt.contractAddress
-    // let orderInfo = {
-    //     orderId: createReceipt.contractAddress,
-    //     symbol: req.symbol,
-    //     createdAt: Date.now(),
-    //     status: 0
-    // }
-    // if(orderInfo.orderId == ''){
-    //     return 'Error missing orderId'
-    // }
-    // let request = {
-    //     orderContractAddress: createReceipt.contractAddress,
-    //     owner: req.owner,
-    //     admin: createReceipt.contractAddress,
-    // }
+    // return createReceipt.contractAddress
+    let orderInfo = {
+        orderId: createReceipt.contractAddress,
+        symbol: req.symbol,
+        createdAt: Date.now(),
+        status: 0
+    }
+    if(orderInfo.orderId == ''){
+        return 'Error missing orderId'
+    }
+    let request = {
+        orderContractAddress: createReceipt.contractAddress,
+        owner: req.owner,
+        admin: createReceipt.contractAddress,
+    }
 
-    // let respSetAdmin = await setAdminToken(request)
-    // console.log("Resp set admin token: ", respSetAdmin.transactionHash, " -s: ", respSetAdmin.status)
+    let nonce = await getNonce(fxceCfg.contractOwnerAddr)
+    let respSetAdmin = await setAdminToken(request)
+    console.log("Resp set admin token: ", respSetAdmin.transactionHash, " -s: ", respSetAdmin.status)
 
-    // // let receipt = await redisClient.zadd(req.challengeId, req.score, JSON.stringify(orderInfo));
-    // return receipt
+    let receipt = await redisClient.zadd(req.assetAddress, nonce, JSON.stringify(orderInfo));
+    return receipt
 }
 
 exports.setPriceOrder = async (req) => {
@@ -91,7 +91,7 @@ exports.setPriceOrder = async (req) => {
 }
 
 exports.scanPendingOrder = async (req) =>{
-    // let listOrder = await redisClient.zrangeAsync(req, 0, -1);
+    let listOrder = await redisClient.zrangeAsync(req, 0, -1);
     return listOrder
 }
 

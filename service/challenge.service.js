@@ -24,8 +24,8 @@ const provider = new HDWalletProvider({
 
 const contractParams = {
     from    : fxceCfg.contractOwnerAddr,
-    gasPrice: 10000000000,
-    gasLimit: 12354599,
+    gasPrice: 25000000000,
+    gasLimit: 8500000,
 };
 
 Contract.setProvider(provider)
@@ -36,10 +36,7 @@ exports.createChallenge = async (req)=>{
     let contract = new Contract(challengeAbi, fxceCfg.fxceChallengeAddress);
     let nonce = await getNonce(fxceCfg.contractOwnerAddr);
     try {
-        let receipt = await contract.methods.createChallenge(req.challengeId, req.amount).send(Object.assign(contractParams, {
-            nonce: nonce,
-            value: web3.utils.toWei(JSON.stringify(req.amount), 'ether')
-        }));
+        let receipt = await contract.methods.createChallenge(req.challengeId, req.amount).send(Object.assign(contractParams, {nonce: nonce}));
         return receipt;
     } catch (err) {
         return err.message
@@ -50,7 +47,7 @@ exports.withDraw = async(req) =>{
     let contract = new Contract(assetAbi, fxceCfg.fxceChallengeAddress)
     let nonce = await getNonce(fxceCfg.contractOwnerAddr)
     try {
-        let receipt = await contract.methods.withdrawAsset(req.sender, req.amount).send(Object.assign(contractParams, {nonce: nonce}))
+        let receipt = await contract.methods.withdrawChallenge(req.sender, req.amount).send(Object.assign(contractParams, {nonce: nonce}))
         return receipt
     } catch (err) {
         console.log("withdraw asset err: ", err.message)
