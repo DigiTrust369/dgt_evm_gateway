@@ -2,11 +2,11 @@ const Contract = require('web3-eth-contract');
 const bluebird = require('bluebird'); // eslint-disable-line no-global-assign
 const HDWalletProvider = require("@truffle/hdwallet-provider");
 const redis = require("redis");
-const {fxceCfg} = require("../config/vars");
+const {dgtCfg} = require("../config/vars");
 bluebird.promisifyAll(redis);
 const {setAdminToken} = require('./token.service')
 const Web3 = require('web3')
-const web3 = new Web3(fxceCfg.providerUrl)
+const web3 = new Web3(dgtCfg.providerUrl)
 
 
 //contract config 
@@ -17,13 +17,13 @@ const challengeAbi = require("../abi/challengeAbi.json");
 const assetAbi = require("../abi/assetAbi.json");
 
 const provider = new HDWalletProvider({ 
-    privateKeys: [fxceCfg.contractOwnerPriv], 
-    providerOrUrl: fxceCfg.providerUrl,
+    privateKeys: [dgtCfg.contractOwnerPriv], 
+    providerOrUrl: dgtCfg.providerUrl,
     pollingInterval: 8000
 });
 
 const contractParams = {
-    from    : fxceCfg.contractOwnerAddr,
+    from    : dgtCfg.contractOwnerAddr,
     gasPrice: 25000000000,
     gasLimit: 8500000,
 };
@@ -31,10 +31,10 @@ const contractParams = {
 Contract.setProvider(provider)
 
 exports.createChallenge = async (req)=>{
-    let setAdmin = await setAdminToken({admin: fxceCfg.fxceChallengeAddress});
+    let setAdmin = await setAdminToken({admin: dgtCfg.dgtChallengeAddress});
     console.log("Set admin tx: ", setAdmin.transactionHash)
-    let contract = new Contract(challengeAbi, fxceCfg.fxceChallengeAddress);
-    let nonce = await getNonce(fxceCfg.contractOwnerAddr);
+    let contract = new Contract(challengeAbi, dgtCfg.dgtChallengeAddress);
+    let nonce = await getNonce(dgtCfg.contractOwnerAddr);
     try {
         let receipt = await contract.methods.createChallenge(req.challengeId, req.amount).send(Object.assign(contractParams, {nonce: nonce}));
         return receipt;
@@ -44,8 +44,8 @@ exports.createChallenge = async (req)=>{
 }
 
 exports.withDraw = async(req) =>{
-    let contract = new Contract(assetAbi, fxceCfg.fxceChallengeAddress)
-    let nonce = await getNonce(fxceCfg.contractOwnerAddr)
+    let contract = new Contract(assetAbi, dgtCfg.dgtChallengeAddress)
+    let nonce = await getNonce(dgtCfg.contractOwnerAddr)
     try {
         let receipt = await contract.methods.withdrawChallenge(req.sender, req.amount).send(Object.assign(contractParams, {nonce: nonce}))
         return receipt
@@ -56,8 +56,8 @@ exports.withDraw = async(req) =>{
 }
 
 exports.createChallengeConfig = async(req) =>{
-    let contract = new Contract(challengeAbi, fxceCfg.fxceChallengeAddress)
-    let nonce = await getNonce(fxceCfg.contractOwnerAddr)
+    let contract = new Contract(challengeAbi, dgtCfg.dgtChallengeAddress)
+    let nonce = await getNonce(dgtCfg.contractOwnerAddr)
     try {
         let request = [
             req.configId,
@@ -77,8 +77,8 @@ exports.createChallengeConfig = async(req) =>{
 }
 
 exports.getChallengeById = async(req) =>{
-    let contract = new Contract(challengeAbi, fxceCfg.fxceChallengeAddress)
-    let nonce = await getNonce(fxceCfg.contractOwnerAddr)
+    let contract = new Contract(challengeAbi, dgtCfg.dgtChallengeAddress)
+    let nonce = await getNonce(dgtCfg.contractOwnerAddr)
     try {
         // let request = [
         //     req.configId,
@@ -100,7 +100,7 @@ exports.getChallengeById = async(req) =>{
 
 exports.getAssetByAddress = async(req) =>{
     let contract = new Contract(assetAbi, req.assetAddress)
-    let nonce = await getNonce(fxceCfg.contractOwnerAddr)
+    let nonce = await getNonce(dgtCfg.contractOwnerAddr)
     try {
         let receipt = await contract.methods.getChallengeInfo().call()
         console.log("Asset info: ", receipt)

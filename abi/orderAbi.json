@@ -3,7 +3,7 @@
 		"inputs": [
 			{
 				"internalType": "address",
-				"name": "_fxceToken",
+				"name": "_dgtToken",
 				"type": "address"
 			},
 			{
@@ -425,7 +425,7 @@
 	},
 	{
 		"inputs": [],
-		"name": "fxceToken",
+		"name": "dgtToken",
 		"outputs": [
 			{
 				"internalType": "contract IERC20",
@@ -677,11 +677,11 @@
 		"inputs": [
 			{
 				"internalType": "address",
-				"name": "_fxceToken",
+				"name": "_dgtToken",
 				"type": "address"
 			}
 		],
-		"name": "setFXCEToken",
+		"name": "setdgtToken",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"

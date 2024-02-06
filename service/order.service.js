@@ -2,7 +2,7 @@ const Contract = require('web3-eth-contract');
 const bluebird = require('bluebird'); // eslint-disable-line no-global-assign
 const redis = require("redis");
 const Web3 = require('web3')
-const {redisUrl, fxceCfg, contractParams} = require("../config/vars");
+const {redisUrl, dgtCfg, contractParams} = require("../config/vars");
 let redisClient = redis.createClient(redisUrl);
 bluebird.promisifyAll(redis);
 
@@ -13,13 +13,13 @@ const orderAbi = require("../abi/orderAbi.json");
 const orderByteCode = require('../abi/orderByteCode.json');
 const {provider, contractProvider} = require('../utils/provider')
 
-const web3 = new Web3(fxceCfg.providerUrl)
+const web3 = new Web3(dgtCfg.providerUrl)
 
 Contract.setProvider(provider)
 
 const depositOrder = async(req) =>{
     let contract = new contractProvider(orderAbi, req.orderContractAddress)
-    let nonce = await getNonce(fxceCfg.contractOwnerAddr)
+    let nonce = await getNonce(dgtCfg.contractOwnerAddr)
     try {
         let receipt = await contract.methods.depositOrder(req.owner).send(Object.assign(contractParams, {nonce: nonce}));
         return receipt
@@ -35,21 +35,21 @@ exports.createOrder = async (req) =>{
     let payload = {
         data: orderByteCode.object,
         arguments: [
-            fxceCfg.fxceTokenAddress,
-            fxceCfg.contractOwnerAddr, //fee wallet address
+            dgtCfg.dgtTokenAddress,
+            dgtCfg.contractOwnerAddr, //fee wallet address
             [req.assetAddress ,req.symbol, req.startPrice, req.endPrice, 0, 0,req.amount, req.duration], //order info
-            fxceCfg.contractOwnerAddr, //price feed
+            dgtCfg.contractOwnerAddr, //price feed
         ]
     }
     let deployTx =deployContract.deploy(payload)
     const createTransaction = await web3.eth.accounts.signTransaction(
         {
-            from: fxceCfg.contractOwnerAddr,
+            from: dgtCfg.contractOwnerAddr,
             data: deployTx.encodeABI(),
             gasPrice: 25000000000,
             gasLimit: 8500000,
         },
-        fxceCfg.contractOwnerPriv
+        dgtCfg.contractOwnerPriv
     );
     const createReceipt = await web3.eth.sendSignedTransaction(
         createTransaction.rawTransaction
@@ -71,7 +71,7 @@ exports.createOrder = async (req) =>{
         admin: createReceipt.contractAddress,
     }
 
-    let nonce = await getNonce(fxceCfg.contractOwnerAddr)
+    let nonce = await getNonce(dgtCfg.contractOwnerAddr)
     let respSetAdmin = await setAdminToken(request)
     console.log("Resp set admin token: ", respSetAdmin.transactionHash, " -s: ", respSetAdmin.status)
 
@@ -81,7 +81,7 @@ exports.createOrder = async (req) =>{
 
 exports.setPriceOrder = async (req) => {
     let orderContract = new Contract(orderAbi, req.orderContractAddress);
-    let nonce = await getNonce(fxceCfg.contractOwnerAddr)
+    let nonce = await getNonce(dgtCfg.contractOwnerAddr)
     try {
         let receipt = await orderContract.methods.setPriceOrder(req.price, req.symbol).send(Object.assign(contractParams, {nonce: nonce}));
         return receipt
@@ -108,7 +108,7 @@ exports.addWhiteListAddress = async(req) =>{
 
 exports.claimProfit = async(req) =>{
     let orderContract = new contractProvider(orderAbi, req.orderAdr)
-    let nonce = await getNonce(fxceCfg.contractOwnerAddr)
+    let nonce = await getNonce(dgtCfg.contractOwnerAddr)
     try {
         let receipt = await orderContract.methods.withDraw(req.receiver).send(Object.assign(contractParams, {nonce: nonce}))
         return receipt
@@ -119,7 +119,7 @@ exports.claimProfit = async(req) =>{
 
 exports.payToPool = async(req) =>{
     let orderContract = new contractProvider(orderAbi, req.orderContractAddress)
-    let nonce = await getNonce(fxceCfg.contractOwnerAddr)
+    let nonce = await getNonce(dgtCfg.contractOwnerAddr)
     try {
         let receipt = await orderContract.methods.payToPool(req.amount).send(Object.assign(contractParams, {nonce: nonce}))
         return receipt
@@ -130,7 +130,7 @@ exports.payToPool = async(req) =>{
 
 exports.confirmResult = async(req) =>{
     let orderContract = new contractProvider(orderAbi, req.orderContractAddress)
-    let nonce = await getNonce(fxceCfg.contractOwnerAddr)
+    let nonce = await getNonce(dgtCfg.contractOwnerAddr)
     let price = await getLatestPrice(req.symbol)
     // //get order info 
     // let orderInfo
@@ -153,7 +153,7 @@ exports.confirmResult = async(req) =>{
 
 exports.getOrderByAddress = async(req) =>{
     let contract = new Contract(orderAbi, req.orderAdr)
-    let nonce = await getNonce(fxceCfg.contractOwnerAddr)
+    let nonce = await getNonce(dgtCfg.contractOwnerAddr)
     try {
         let receipt = await contract.methods.getOrderInfo(req.orderAdr).call()
         console.log("Asset info: ", receipt)
@@ -166,7 +166,7 @@ exports.getOrderByAddress = async(req) =>{
 
 exports.getOrderBalance = async(req) =>{
     let contract = new Contract(orderAbi, req.orderAdr)
-    let nonce = await getNonce(fxceCfg.contractOwnerAddr)
+    let nonce = await getNonce(dgtCfg.contractOwnerAddr)
     try {
         let resp = await contract.methods.getBalance().call()
         return resp

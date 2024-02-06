@@ -13,7 +13,7 @@
 			},
 			{
 				"internalType": "address",
-				"name": "_fxceToken",
+				"name": "_dgtToken",
 				"type": "address"
 			}
 		],
@@ -418,7 +418,7 @@
 	},
 	{
 		"inputs": [],
-		"name": "fxceToken",
+		"name": "dgtToken",
 		"outputs": [
 			{
 				"internalType": "contract IERC20",

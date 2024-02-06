@@ -2317,7 +2317,7 @@ contract Service is IChallengeCore, ERC721Pausable, AccessControl, Ownable {
 
     bytes32 public constant PAUSED_ROLE = keccak256("PAUSED_ROLE");
     uint256 public latestTokenId;
-    IERC20 public fxceToken = IERC20(0xDdf9B62DbfbDd5D473bB89295843915D7F21cFed);
+    IERC20 public dgtToken = IERC20(0xDdf9B62DbfbDd5D473bB89295843915D7F21cFed);
 
     event CreateChallenge(address userAddress, uint256 tokenId, string challengeId);
 
@@ -2339,11 +2339,11 @@ contract Service is IChallengeCore, ERC721Pausable, AccessControl, Ownable {
     constructor(
         string memory name,
         string memory symbol,
-        address _fxceToken
+        address _dgtToken
     ) public ERC721(name, symbol, msg.sender) {
         _setupRole(DEFAULT_ADMIN_ROLE, _msgSender());
         _setupRole(PAUSED_ROLE, _msgSender());
-        fxceToken = IERC20(_fxceToken);
+        dgtToken = IERC20(_dgtToken);
         whiteListAddress.push(msg.sender);
         isWhiteList[msg.sender] = true;
     }
@@ -2363,8 +2363,8 @@ contract Service is IChallengeCore, ERC721Pausable, AccessControl, Ownable {
         string memory _challengeId,
         uint256 _amount
     ) external override onlyAdmin returns (uint256) {
-        require(fxceToken.balanceOf(msg.sender) > _amount, "Invalid balance to create challenge");
-        fxceToken.adminTransferFrom(msg.sender, address(this), _amount); //deposit to challange 
+        require(dgtToken.balanceOf(msg.sender) > _amount, "Invalid balance to create challenge");
+        dgtToken.adminTransferFrom(msg.sender, address(this), _amount); //deposit to challange 
         Challenge memory  _challenge;
         uint256 nextTokenId = latestTokenId.add(1);
         _challenge.owner = _msgSender();
@@ -2384,9 +2384,9 @@ contract Service is IChallengeCore, ERC721Pausable, AccessControl, Ownable {
     }
 
     function withdrawChallenge(address sender, uint256 amount) public onlyAdmin{
-        require(fxceToken.balanceOf(address(this)) >= amount * 10**18, "Invalid balance to withdraw");
-        fxceToken.approve(address(this), amount * 10**18);
-        fxceToken.transferFrom(address(this), sender, amount * 10**18);
+        require(dgtToken.balanceOf(address(this)) >= amount * 10**18, "Invalid balance to withdraw");
+        dgtToken.approve(address(this), amount * 10**18);
+        dgtToken.transferFrom(address(this), sender, amount * 10**18);
     }
 
     function getChallengeConfigInfo(string memory _challengeId, string memory _configId) external view override returns(string memory, uint256){

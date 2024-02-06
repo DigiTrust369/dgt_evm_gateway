@@ -37,7 +37,7 @@ interface IERC20 {
 }
 
 contract OrderContract is Ownable{
-    IERC20 public fxceToken = IERC20(0xDdf9B62DbfbDd5D473bB89295843915D7F21cFed);
+    IERC20 public dgtToken = IERC20(0xDdf9B62DbfbDd5D473bB89295843915D7F21cFed);
 
     address public feeWallet;
     mapping(address => uint256) public orderStatus;
@@ -52,11 +52,11 @@ contract OrderContract is Ownable{
     event ClaimProfit(address sender, Order indexed _order, uint256 amount, uint256 createdAt);
     event PayToPool(Order indexed _order, uint amount, address feeWallet, uint256 createdAt);
 
-    constructor(address _fxceToken, address _feeWallet, Order memory _order, address _owner, address _priceFeed){
+    constructor(address _dgtToken, address _feeWallet, Order memory _order, address _owner, address _priceFeed){
         orderStatus[address(this)] = 0; // 0 is pending
         orderInfo[address(this)] = _order;
         orderOwner[address(this)] = _owner;
-        fxceToken = IERC20(_fxceToken);
+        dgtToken = IERC20(_dgtToken);
         feeWallet = _feeWallet;
         whiteListAddress.push(msg.sender);
         whiteListAddress.push(_priceFeed);
@@ -71,7 +71,7 @@ contract OrderContract is Ownable{
 
     function depositOrder(address _owner) public onlyAdmin{
         uint256 _amount = orderInfo[address(this)].amount;
-        fxceToken.adminTransferFrom(_owner, address(this), _amount * 10**18);
+        dgtToken.adminTransferFrom(_owner, address(this), _amount * 10**18);
     }
 
     function addwhiteListAddress(address _admin) public onlyOwner{
@@ -83,8 +83,8 @@ contract OrderContract is Ownable{
         feeWallet = _feeWallet;
     }
 
-    function setFXCEToken(address _fxceToken) external onlyAdmin{
-        fxceToken = IERC20(_fxceToken);
+    function setdgtToken(address _dgtToken) external onlyAdmin{
+        dgtToken = IERC20(_dgtToken);
     }
 
     function setPriceOrder(uint256 price, string memory _symbol) external onlyAdmin{
@@ -101,7 +101,7 @@ contract OrderContract is Ownable{
     //     orderOwner[_order.orderId] = _owner;
     //     orderStatus[_order.orderId] = 0;
     //     orderInfo[_order.orderId] = _order;
-    //     fxceToken.transferFrom(msg.sender, address(this), _order.amount);
+    //     dgtToken.transferFrom(msg.sender, address(this), _order.amount);
     //     emit AddPendingOrder(_order, block.timestamp);
     // }
 
@@ -143,21 +143,21 @@ contract OrderContract is Ownable{
         /*
             0 = long | 1 = short
         */
-        require(fxceToken.balanceOf(address(this)) > amount, "Invalid balance to withdraw");
-        fxceToken.approve(address(this), amount);
-        fxceToken.adminTransferFrom(address(this), sender, amount * 10**18);
+        require(dgtToken.balanceOf(address(this)) > amount, "Invalid balance to withdraw");
+        dgtToken.approve(address(this), amount);
+        dgtToken.adminTransferFrom(address(this), sender, amount * 10**18);
         emit ClaimProfit(sender, orderInfo[address(this)], amount, block.timestamp);
     }
 
     function payToPool(uint256 amount) public onlyAdmin{
-        require(fxceToken.balanceOf(address(this)) > amount, "Invalid balance to pay");
-        fxceToken.approve(address(this), amount);
-        fxceToken.adminTransferFrom(address(this), feeWallet, amount * 10**18);
+        require(dgtToken.balanceOf(address(this)) > amount, "Invalid balance to pay");
+        dgtToken.approve(address(this), amount);
+        dgtToken.adminTransferFrom(address(this), feeWallet, amount * 10**18);
         emit PayToPool(orderInfo[address(this)], amount, feeWallet, block.timestamp);
     }
 
     function getBalance(address req) external view returns(uint256){
-        return fxceToken.balanceOf(req);
+        return dgtToken.balanceOf(req);
     }
 
     function getOrderSymbol() external view returns(string memory){
