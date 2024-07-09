@@ -70,7 +70,7 @@ exports.registerBySigAndAirdrop = async(req) =>{
             req.r,
             req.s
         ]
-        let receipt = await contract.methods.createChallengeConfig(request).send(Object.assign(contractParams, {nonce: nonce}))
+        let receipt = await contract.methods.registerBySigAndAirdrop(request).send(Object.assign(contractParams, {nonce: nonce}))
         return receipt
     } catch (err) {
         return err.message
