@@ -1,7 +1,8 @@
 const { recoverPublicKey } = require('ethers/lib/utils');
 const express = require('express');
-const orderRoute = require('./order.route');
-const challengeRoute = require('./challenge.route')
+// const orderRoute = require('./order.route');
+// const challengeRoute = require('./challenge.route');
+const profileRoute = require('./profile.route');
 
 const router = express.Router();
 
@@ -13,7 +14,8 @@ router.get('/status', (req, res) => res.send('OK'));
 /**
  * GET v1/docs
  */
-router.use('/order', orderRoute);
-router.use('/asset', challengeRoute);
+// router.use('/order', orderRoute);
+// router.use('/asset', challengeRoute);
+router.use('/profile',profileRoute);
 
 module.exports = router;

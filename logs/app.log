@@ -2766,3 +2766,223 @@ Error: ETIMEDOUT
     at PollingBlockTracker._performSync (/home/michel/pqd/dgt-priceFeed/node_modules/eth-block-tracker/src/polling.js:51:24)
     at runMicrotasks (<anonymous>)
     at processTicksAndRejections (node:internal/process/task_queues:96:5)
+2024-07-10T16:45:58.845Z error: uncaughtException: Cannot find module '../controller/priceFeed.controller'
+Require stack:
+- F:\Study\Digitrust\dgt_evm_gateway\routes\order.route.js
+- F:\Study\Digitrust\dgt_evm_gateway\routes\index.js
+- F:\Study\Digitrust\dgt_evm_gateway\config\express.js
+- F:\Study\Digitrust\dgt_evm_gateway\index.js
+Error: Cannot find module '../controller/priceFeed.controller'
+Require stack:
+- F:\Study\Digitrust\dgt_evm_gateway\routes\order.route.js
+- F:\Study\Digitrust\dgt_evm_gateway\routes\index.js
+- F:\Study\Digitrust\dgt_evm_gateway\config\express.js
+- F:\Study\Digitrust\dgt_evm_gateway\index.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1140:15)
+    at Module._load (node:internal/modules/cjs/loader:981:27)
+    at Module.require (node:internal/modules/cjs/loader:1231:19)
+    at require (node:internal/modules/helpers:177:18)
+    at Object.<anonymous> (F:\Study\Digitrust\dgt_evm_gateway\routes\order.route.js:2:29)
+    at Module._compile (node:internal/modules/cjs/loader:1364:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1422:10)
+    at Module.load (node:internal/modules/cjs/loader:1203:32)
+    at Module._load (node:internal/modules/cjs/loader:1019:12)
+    at Module.require (node:internal/modules/cjs/loader:1231:19)
+    at require (node:internal/modules/helpers:177:18)
+    at Object.<anonymous> (F:\Study\Digitrust\dgt_evm_gateway\routes\index.js:3:20)
+    at Module._compile (node:internal/modules/cjs/loader:1364:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1422:10)
+    at Module.load (node:internal/modules/cjs/loader:1203:32)
+    at Module._load (node:internal/modules/cjs/loader:1019:12)
+2024-07-10T16:48:11.848Z error: uncaughtException: Cannot find module './priceFeed_service'
+Require stack:
+- F:\Study\Digitrust\dgt_evm_gateway\service\order.service.js
+- F:\Study\Digitrust\dgt_evm_gateway\controller\order.controller.js
+- F:\Study\Digitrust\dgt_evm_gateway\routes\order.route.js
+- F:\Study\Digitrust\dgt_evm_gateway\routes\index.js
+- F:\Study\Digitrust\dgt_evm_gateway\config\express.js
+- F:\Study\Digitrust\dgt_evm_gateway\index.js
+Error: Cannot find module './priceFeed_service'
+Require stack:
+- F:\Study\Digitrust\dgt_evm_gateway\service\order.service.js
+- F:\Study\Digitrust\dgt_evm_gateway\controller\order.controller.js
+- F:\Study\Digitrust\dgt_evm_gateway\routes\order.route.js
+- F:\Study\Digitrust\dgt_evm_gateway\routes\index.js
+- F:\Study\Digitrust\dgt_evm_gateway\config\express.js
+- F:\Study\Digitrust\dgt_evm_gateway\index.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1140:15)
+    at Module._load (node:internal/modules/cjs/loader:981:27)
+    at Module.require (node:internal/modules/cjs/loader:1231:19)
+    at require (node:internal/modules/helpers:177:18)
+    at Object.<anonymous> (F:\Study\Digitrust\dgt_evm_gateway\service\order.service.js:10:36)
+    at Module._compile (node:internal/modules/cjs/loader:1364:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1422:10)
+    at Module.load (node:internal/modules/cjs/loader:1203:32)
+    at Module._load (node:internal/modules/cjs/loader:1019:12)
+    at Module.require (node:internal/modules/cjs/loader:1231:19)
+    at require (node:internal/modules/helpers:177:18)
+    at Object.<anonymous> (F:\Study\Digitrust\dgt_evm_gateway\controller\order.controller.js:9:5)
+    at Module._compile (node:internal/modules/cjs/loader:1364:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1422:10)
+    at Module.load (node:internal/modules/cjs/loader:1203:32)
+    at Module._load (node:internal/modules/cjs/loader:1019:12)
+2024-07-10T16:48:11.858Z error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16)
+2024-07-10T16:54:17.198Z error: uncaughtException: Cannot find module './priceFeed_service'
+Require stack:
+- F:\Study\Digitrust\dgt_evm_gateway\service\order.service.js
+- F:\Study\Digitrust\dgt_evm_gateway\controller\order.controller.js
+- F:\Study\Digitrust\dgt_evm_gateway\routes\order.route.js
+- F:\Study\Digitrust\dgt_evm_gateway\routes\index.js
+- F:\Study\Digitrust\dgt_evm_gateway\config\express.js
+- F:\Study\Digitrust\dgt_evm_gateway\index.js
+Error: Cannot find module './priceFeed_service'
+Require stack:
+- F:\Study\Digitrust\dgt_evm_gateway\service\order.service.js
+- F:\Study\Digitrust\dgt_evm_gateway\controller\order.controller.js
+- F:\Study\Digitrust\dgt_evm_gateway\routes\order.route.js
+- F:\Study\Digitrust\dgt_evm_gateway\routes\index.js
+- F:\Study\Digitrust\dgt_evm_gateway\config\express.js
+- F:\Study\Digitrust\dgt_evm_gateway\index.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1140:15)
+    at Module._load (node:internal/modules/cjs/loader:981:27)
+    at Module.require (node:internal/modules/cjs/loader:1231:19)
+    at require (node:internal/modules/helpers:177:18)
+    at Object.<anonymous> (F:\Study\Digitrust\dgt_evm_gateway\service\order.service.js:10:36)
+    at Module._compile (node:internal/modules/cjs/loader:1364:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1422:10)
+    at Module.load (node:internal/modules/cjs/loader:1203:32)
+    at Module._load (node:internal/modules/cjs/loader:1019:12)
+    at Module.require (node:internal/modules/cjs/loader:1231:19)
+    at require (node:internal/modules/helpers:177:18)
+    at Object.<anonymous> (F:\Study\Digitrust\dgt_evm_gateway\controller\order.controller.js:9:5)
+    at Module._compile (node:internal/modules/cjs/loader:1364:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1422:10)
+    at Module.load (node:internal/modules/cjs/loader:1203:32)
+    at Module._load (node:internal/modules/cjs/loader:1019:12)
+2024-07-10T16:54:17.216Z error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16)
+2024-07-11T14:53:32.754Z error: uncaughtException: Cannot find module './priceFeed_service'
+Require stack:
+- F:\Study\Digitrust\dgt_evm_gateway\service\order.service.js
+- F:\Study\Digitrust\dgt_evm_gateway\controller\order.controller.js
+- F:\Study\Digitrust\dgt_evm_gateway\routes\order.route.js
+- F:\Study\Digitrust\dgt_evm_gateway\routes\index.js
+- F:\Study\Digitrust\dgt_evm_gateway\config\express.js
+- F:\Study\Digitrust\dgt_evm_gateway\index.js
+Error: Cannot find module './priceFeed_service'
+Require stack:
+- F:\Study\Digitrust\dgt_evm_gateway\service\order.service.js
+- F:\Study\Digitrust\dgt_evm_gateway\controller\order.controller.js
+- F:\Study\Digitrust\dgt_evm_gateway\routes\order.route.js
+- F:\Study\Digitrust\dgt_evm_gateway\routes\index.js
+- F:\Study\Digitrust\dgt_evm_gateway\config\express.js
+- F:\Study\Digitrust\dgt_evm_gateway\index.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1140:15)
+    at Module._load (node:internal/modules/cjs/loader:981:27)
+    at Module.require (node:internal/modules/cjs/loader:1231:19)
+    at require (node:internal/modules/helpers:177:18)
+    at Object.<anonymous> (F:\Study\Digitrust\dgt_evm_gateway\service\order.service.js:10:36)
+    at Module._compile (node:internal/modules/cjs/loader:1364:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1422:10)
+    at Module.load (node:internal/modules/cjs/loader:1203:32)
+    at Module._load (node:internal/modules/cjs/loader:1019:12)
+    at Module.require (node:internal/modules/cjs/loader:1231:19)
+    at require (node:internal/modules/helpers:177:18)
+    at Object.<anonymous> (F:\Study\Digitrust\dgt_evm_gateway\controller\order.controller.js:9:5)
+    at Module._compile (node:internal/modules/cjs/loader:1364:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1422:10)
+    at Module.load (node:internal/modules/cjs/loader:1203:32)
+    at Module._load (node:internal/modules/cjs/loader:1019:12)
+2024-07-11T14:53:32.771Z error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16)
+2024-07-11T14:54:05.081Z error: uncaughtException: Cannot find module './priceFeed_service'
+Require stack:
+- F:\Study\Digitrust\dgt_evm_gateway\service\token.service.js
+- F:\Study\Digitrust\dgt_evm_gateway\service\profile.service.js
+- F:\Study\Digitrust\dgt_evm_gateway\controller\profile.controller.js
+- F:\Study\Digitrust\dgt_evm_gateway\routes\profile.route.js
+- F:\Study\Digitrust\dgt_evm_gateway\routes\index.js
+- F:\Study\Digitrust\dgt_evm_gateway\config\express.js
+- F:\Study\Digitrust\dgt_evm_gateway\index.js
+Error: Cannot find module './priceFeed_service'
+Require stack:
+- F:\Study\Digitrust\dgt_evm_gateway\service\token.service.js
+- F:\Study\Digitrust\dgt_evm_gateway\service\profile.service.js
+- F:\Study\Digitrust\dgt_evm_gateway\controller\profile.controller.js
+- F:\Study\Digitrust\dgt_evm_gateway\routes\profile.route.js
+- F:\Study\Digitrust\dgt_evm_gateway\routes\index.js
+- F:\Study\Digitrust\dgt_evm_gateway\config\express.js
+- F:\Study\Digitrust\dgt_evm_gateway\index.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1140:15)
+    at Module._load (node:internal/modules/cjs/loader:981:27)
+    at Module.require (node:internal/modules/cjs/loader:1231:19)
+    at require (node:internal/modules/helpers:177:18)
+    at Object.<anonymous> (F:\Study\Digitrust\dgt_evm_gateway\service\token.service.js:3:20)
+    at Module._compile (node:internal/modules/cjs/loader:1364:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1422:10)
+    at Module.load (node:internal/modules/cjs/loader:1203:32)
+    at Module._load (node:internal/modules/cjs/loader:1019:12)
+    at Module.require (node:internal/modules/cjs/loader:1231:19)
+    at require (node:internal/modules/helpers:177:18)
+    at Object.<anonymous> (F:\Study\Digitrust\dgt_evm_gateway\service\profile.service.js:10:25)
+    at Module._compile (node:internal/modules/cjs/loader:1364:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1422:10)
+    at Module.load (node:internal/modules/cjs/loader:1203:32)
+    at Module._load (node:internal/modules/cjs/loader:1019:12)
+2024-07-11T14:54:05.099Z error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16)
+2024-07-11T14:56:58.671Z error: uncaughtException: Cannot find module './service/priceFeed_service'
+Require stack:
+- F:\Study\Digitrust\dgt_evm_gateway\index.js
+Error: Cannot find module './service/priceFeed_service'
+Require stack:
+- F:\Study\Digitrust\dgt_evm_gateway\index.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1140:15)
+    at Module._load (node:internal/modules/cjs/loader:981:27)
+    at Module.require (node:internal/modules/cjs/loader:1231:19)
+    at require (node:internal/modules/helpers:177:18)
+    at Object.<anonymous> (F:\Study\Digitrust\dgt_evm_gateway\index.js:12:5)
+    at Module._compile (node:internal/modules/cjs/loader:1364:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1422:10)
+    at Module.load (node:internal/modules/cjs/loader:1203:32)
+    at Module._load (node:internal/modules/cjs/loader:1019:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:128:12)
+    at node:internal/main/run_main_module:28:49
+2024-07-11T14:56:58.681Z error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16)
+2024-07-11T14:58:42.896Z error: uncaughtException: require(...) is not a function
+TypeError: require(...) is not a function
+    at Object.<anonymous> (F:\Study\Digitrust\dgt_evm_gateway\index.js:14:1)
+    at Module._compile (node:internal/modules/cjs/loader:1364:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1422:10)
+    at Module.load (node:internal/modules/cjs/loader:1203:32)
+    at Module._load (node:internal/modules/cjs/loader:1019:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:128:12)
+    at node:internal/main/run_main_module:28:49
+2024-07-11T14:58:42.905Z error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16)
+2024-07-11T15:07:01.520Z error: uncaughtException: require(...) is not a function
+TypeError: require(...) is not a function
+    at Object.<anonymous> (F:\Study\Digitrust\dgt_evm_gateway\index.js:14:1)
+    at Module._compile (node:internal/modules/cjs/loader:1364:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1422:10)
+    at Module.load (node:internal/modules/cjs/loader:1203:32)
+    at Module._load (node:internal/modules/cjs/loader:1019:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:128:12)
+    at node:internal/main/run_main_module:28:49
+2024-07-11T15:07:01.528Z error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16)
+2024-07-11T15:07:27.980Z error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16)
+2024-07-11T15:16:04.107Z error: uncaughtException: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379
+Error: connect ECONNREFUSED 127.0.0.1:6379
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1555:16)

@@ -41,7 +41,7 @@ exports.createOrder = async (req) =>{
             dgtCfg.contractOwnerAddr, //price feed
         ]
     }
-    let deployTx =deployContract.deploy(payload)
+    let deployTx = deployContract.deploy(payload)
     const createTransaction = await web3.eth.accounts.signTransaction(
         {
             from: dgtCfg.contractOwnerAddr,

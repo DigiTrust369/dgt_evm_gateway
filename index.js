@@ -1,17 +1,17 @@
 Promise = require('bluebird'); // eslint-disable-line no-global-assign
 const { logger } = require('./config/logger');
 // const redis = require("redis");
-const{redisUrl, redisTopics, env} = require("./config/vars")
+const{redisUrl, redisTopics, env} = require("./config/vars");
 // const subscriber = redis.createClient(redisUrl);
 // const publisher = redis.createClient(redisUrl);
-const server = require('./config/express')
+const server = require('./config/express');
 
 
-const {
-    setPriceFeed, 
-} = require("./service/priceFeed_service");
+// const {
+//     setPriceFeed, 
+// } = require("./service/priceFeed_service");
 
-(async () => {
+(async()=>{
     try {
         // set global variables for all module can use;
         global.logger = logger;

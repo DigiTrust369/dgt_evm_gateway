@@ -1,10 +1,10 @@
 const express = require('express');
-const priceFeedController = require("../controller/priceFeed.controller")
+// const priceFeedController = require("../controller/priceFeed.controller")
 const orderController = require("../controller/order.controller")
 
 const orderRouter = express.Router();
 
-orderRouter.route('/getPrice').get(priceFeedController.setPrice);
+// orderRouter.route('/getPrice').get(priceFeedController.setPrice);
 orderRouter.route('/').get(orderController.getOrderByAddress);
 orderRouter.route('/balance').get(orderController.getOrderBalance);
 
