@@ -9,6 +9,7 @@ bluebird.promisifyAll(redis);
 //contract config 
 const {setAdminToken} = require('./token.service')
 const profileAbi = require("../abi/profileAbi.json");
+const profileByteCode = require("../abi/profileByteCode.json");
 const {provider, contractProvider} = require('../utils/provider')
 
 const web3 = new Web3(dgtCfg.providerUrl)
@@ -16,18 +17,10 @@ const web3 = new Web3(dgtCfg.providerUrl)
 Contract.setProvider(provider)
 
 exports.createVault = async (req) =>{
-    // let contract = new Contract(orderAbi, orderContractAddress);
-    //set key - orderaddress 
     let deployContract = new web3.eth.Contract(profileAbi)
-    // let payload = {
-    //     data: orderByteCode.object,
-    //     arguments: [
-    //         dgtCfg.dgtTokenAddress,
-    //         dgtCfg.contractOwnerAddr, //fee wallet address
-    //         [req.assetAddress ,req.symbol, req.startPrice, req.endPrice, 0, 0,req.amount, req.duration], //order info
-    //         dgtCfg.contractOwnerAddr, //price feed
-    //     ]
-    // }
+    let payload = {
+        data: profileByteCode.object,
+    }
     let deployTx = deployContract.deploy(payload)
     const createTransaction = await web3.eth.accounts.signTransaction(
         {
@@ -42,26 +35,7 @@ exports.createVault = async (req) =>{
         createTransaction.rawTransaction
     );
     console.log('Contract deployed at address', createReceipt.contractAddress);
-    // return createReceipt.contractAddress
-    let orderInfo = {
-        orderId: createReceipt.contractAddress,
-        symbol: req.symbol,
-        createdAt: Date.now(),
-        status: 0
-    }
-    if(orderInfo.orderId == ''){
-        return 'Error missing orderId'
-    }
-    let request = {
-        orderContractAddress: createReceipt.contractAddress,
-        owner: req.owner,
-        admin: createReceipt.contractAddress,
-    }
-    let respSetAdmin = await setAdminToken(request)
-    console.log("Resp set admin token: ", respSetAdmin.transactionHash, " -s: ", respSetAdmin.status)
-
-    let receipt = await redisClient.zadd(req.assetAddress,{}, JSON.stringify(orderInfo));
-    return receipt
+    return createReceipt.contractAddress
 }
 
 exports.initializeVault = async(req) =>{
@@ -72,4 +46,8 @@ exports.initializeVault = async(req) =>{
     } catch (err) {
         return err.message
     }
+}
+
+exports.test = async() =>{
+    return "Hello, it works"
 }

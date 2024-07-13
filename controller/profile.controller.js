@@ -1,6 +1,7 @@
 const {
     createVault,
-    initializeVault
+    initializeVault,
+    test
 } = require('../service/profile.service')
 const { logger } = require('../config/logger');
 
@@ -32,7 +33,14 @@ exports.initializeVaultProfile = async(req, res, next) =>{
             data: resp
         })
     } catch (err) {
-        logger.info("Set price order error: ", err.message)
+        logger.info("Initialize error: ", err.message)
         next(err)
     }
+}
+
+exports.test = async(req, res, next) =>{
+   let resp = await test()
+   res.status(200).json({
+        message: resp
+   });
 }

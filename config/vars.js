@@ -23,7 +23,7 @@ module.exports = Object.freeze({
       name: 'dgt',
       network: process.env.DGT_NETWORK || 'testnet',
       contractOwnerPriv: process.env.DGT_CONTRACT_OWNER_PRIV || 'eedddc0cdc167430de9383d213a9b53c67aefd61bf3c277e3dbe01ee206f9230',
-      contractOwnerAddr: process.env.DGT_CONTRACT_OWNER_ADDR || '0x0D0Df554db5623Ba9A905D0bE4C6bAc48144841E',
+      contractOwnerAddr: process.env.DGT_CONTRACT_OWNER_ADDR || '0x68E8F29BDD06A2Be2E387C96AD5cdB0B34D101B5',
       providerUrl: process.env.DGT_API_URL || 'https://api.baobab.klaytn.net:8651',
       dgtTokenAddress: process.env.DGT_TOKEN_ADDRESS || '0xee42Cf6E3E575b5aBC2B3Ae760BA1AF2c05791df',
       dgtWalletAddress: process.env.DGT_WALLET_ADDRESS || '0x0D0Df554db5623Ba9A905D0bE4C6bAc48144841E',
