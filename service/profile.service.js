@@ -41,7 +41,7 @@ exports.createVault = async (req) =>{
 exports.initializeVault = async(req) =>{
     let contract = new contractProvider(profileAbi, req.profileContractAddress)
     try {
-        let receipt = await contract.methods.depositOrder(req.defaultAdmin,req.pauser,req.minter,req.upgrader).send(Object.assign(contractParams, {}));
+        let receipt = await contract.methods.initialize(req.defaultAdmin,req.pauser,req.minter,req.upgrader).send(Object.assign(contractParams,contractParams));
         return receipt
     } catch (err) {
         return err.message

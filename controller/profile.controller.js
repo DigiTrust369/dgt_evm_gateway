@@ -3,6 +3,7 @@ const {
     initializeVault,
     test
 } = require('../service/profile.service')
+
 const { logger } = require('../config/logger');
 
 exports.createVaultProfile = async(req, res, next) =>{
