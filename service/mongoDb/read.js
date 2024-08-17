@@ -1,46 +1,32 @@
-const dbName = "sample_airbnb";
-const dbCollection = "listingsAndReviews";
+const dbName = "wefit365";
 
-exports.findOneListingByName = async (client, nameOfListing) => {
-    const result = await client.db(dbName).collection(dbCollection).findOne({ name: nameOfListing });
-
-    if (result) {
-        console.log(`Found a listing in the collection with the name '${nameOfListing}':`);
-        console.log(result);
-    } else {
-        console.log(`No listings found with the name '${nameOfListing}'`);
-    }
-}
-
-exports.findListingsWithMultiConditions = async (client, {
-    minimumNumberOfBedrooms = 0,
-    minimumNumberOfBathrooms = 0,
-    maximumNumberOfResults = Number.MAX_SAFE_INTEGER
-} = {}) => {
-    const cursor = client.db(dbName).collection(dbCollection)
-        .find({
-            bedrooms: { $gte: minimumNumberOfBedrooms },
-            bathrooms: { $gte: minimumNumberOfBathrooms }
-        }
-        )
-        .sort({ last_review: -1 })
-        .limit(maximumNumberOfResults);
-
+exports.findActivitiesByEmailAndDate = async (client, userEmail, date) => {
+    const cursor = client.db(dbName).collection("activities").find({ email: userEmail, date: date });
     const results = await cursor.toArray();
 
     if (results.length > 0) {
-        console.log(`Found listing(s) with at least ${minimumNumberOfBedrooms} bedrooms and ${minimumNumberOfBathrooms} bathrooms:`);
+        console.log(`Found activity(s) with email '${userEmail}' and date '${date}':`);
         results.forEach((result, i) => {
-            date = new Date(result.last_review).toDateString();
+            date = new Date(result.date).toDateString();
 
             console.log();
-            console.log(`${i + 1}. name: ${result.name}`);
-            console.log(`   _id: ${result._id}`);
-            console.log(`   bedrooms: ${result.bedrooms}`);
-            console.log(`   bathrooms: ${result.bathrooms}`);
-            console.log(`   most recent review date: ${new Date(result.last_review).toDateString()}`);
+            console.log(`${i + 1}. Type: ${result.typeOf}`);
+            console.log(`   step: ${result.step}`);
+            console.log(`   status: ${result.status}`);
+
         });
     } else {
-        console.log(`No listings found with at least ${minimumNumberOfBedrooms} bedrooms and ${minimumNumberOfBathrooms} bathrooms`);
+        console.log(`No activities found with email '${userEmail}' and date '${date}'`);
+    }
+}
+
+exports.findUserByEmail = async (client, emailUser) => {
+    const result = await client.db(dbName).collection('users').findOne({ email: emailUser });
+
+    if (result) {
+        console.log(`Found a user in the collection with the email '${emailUser}':`);
+        console.log(result);
+    } else {
+        console.log(`No users found with the email '${emailUser}'`);
     }
 }

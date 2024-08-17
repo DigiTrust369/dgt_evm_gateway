@@ -1,14 +1,29 @@
-const dbName = "sample_mflix";
-const dbCollection = "movies";
+const dbName = "wefit365";
 
-exports.createListing = async (client, newListing) => {
-    const result = await client.db(dbName).collection(dbCollection).insertOne(newListing);
-    console.log(`New listing created with the following id: ${result.insertedId}`);
+exports.insertActivity = async (client, newActivity) => {
+    const result = await client.db(dbName).collection("activities").insertOne(newActivity);
+    console.log(`New activity created with the following id: ${result.insertedId}`);
 }
 
-exports.createMultipleListings = async (client, newListings) => {
-    const result = await client.db(dbName).collection(dbCollection).insertMany(newListings);
+exports.insertMultipleActivities = async (client, newActivities) => {
+    const result = await client.db(dbName).collection("activities").insertMany(newActivities);
 
-    console.log(`${result.insertedCount} new listing(s) created with the following id(s):`);
+    console.log(`${result.insertedCount} new activity(s) created with the following id(s):`);
+    console.log(result.insertedIds);
+}
+
+exports.insertUser = async (client, newUser) => {
+    const result = await client.db(dbName).collection("users").insertOne(newUser);
+    // example result = {
+    //     acknowledged: true,
+    //     insertedId: new ObjectId('66c02cd755ce9f3fddff81a4')
+    // }
+    console.log(`New user created with the following id: ${result.insertedId}`);
+}
+
+exports.insertMultipleUsers = async (client, newUsers) => {
+    const result = await client.db(dbName).collection("users").insertMany(newUsers);
+
+    console.log(`${result.insertedCount} new user(s) created with the following id(s):`);
     console.log(result.insertedIds);
 }

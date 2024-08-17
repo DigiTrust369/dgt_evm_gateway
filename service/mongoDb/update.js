@@ -1,34 +1,33 @@
-const dbName = "sample_airbnb";
-const dbCollection = "listingsAndReviews";
+const dbName = "wefit365";
 
-exports.updateListingByName = async (client, nameOfListing, updatedListing) => {
-    const result = await client.db(dbName).collection(dbCollection)
-        .updateOne({ name: nameOfListing }, { $set: updatedListing });
+exports.updateUserByEmail = async (client, emailUser, updatedUser) => {
+    const result = await client.db(dbName).collection('users')
+        .updateOne({ email: emailUser }, { $set: updatedUser });
 
-    console.log(`${result.matchedCount} document(s) matched the query criteria.`);
-    console.log(`${result.modifiedCount} document(s) was/were updated.`);
+    console.log(`${result.matchedCount} user(s) matched the query criteria.`);
+    console.log(`${result.modifiedCount} user(s) was/were updated.`);
 }
 
-exports.upsertListingByName = async (client, nameOfListing, updatedListing) => {
-    const result = await client.db(dbName).collection(dbCollection)
+exports.upsertUserByEmail = async (client, emailUser, updatedUser) => {
+    const result = await client.db(dbName).collection('users')
         .updateOne(
-            { name: nameOfListing },
-            { $set: updatedListing },
+            { email: emailUser },
+            { $set: updatedUser },
             { upsert: true }
         );
-    console.log(`${result.matchedCount} document(s) matched the query criteria.`);
+    console.log(`${result.matchedCount} user(s) matched the query criteria.`);
 
     if (result.upsertedCount > 0) {
-        console.log(`One document was inserted with the id ${result.upsertedId._id}`);
+        console.log(`One user was inserted with the id ${result.upsertedId._id}`);
     } else {
-        console.log(`${result.modifiedCount} document(s) was/were updated.`);
+        console.log(`${result.modifiedCount} user(s) was/were updated.`);
     }
 }
 
-exports.updateAllListingsToHavePropertyType = async (client) => {
-    const result = await client.db(dbName).collection(dbCollection)
-        .updateMany({ property_type: { $exists: false } },
-            { $set: { property_type: "Unknown" } });
-    console.log(`${result.matchedCount} document(s) matched the query criteria.`);
-    console.log(`${result.modifiedCount} document(s) was/were updated.`);
+exports.updateAllActivitiesToHavePropertyType = async (client) => {
+    const result = await client.db(dbName).collection('activities')
+        .updateMany({ txHash: { $exists: false } },
+            { $set: { txHash: "0x...", isClaimed: true } });
+    console.log(`${result.matchedCount} activity(s) matched the query criteria.`);
+    console.log(`${result.modifiedCount} activity(s) was/were updated.`);
 }

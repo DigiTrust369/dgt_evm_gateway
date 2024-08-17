@@ -1,5 +1,6 @@
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const MONGODB_URI = "mongodb+srv://danghlam:password@mydemoapp.o8r47.mongodb.net/?retryWrites=true&w=majority&appName=MyDemoApp";
+const MONGODB_URI = process.env.MONGODB_URI;
+const { insertUser } = require('./insert');
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(MONGODB_URI, {
@@ -20,6 +21,15 @@ async function main() {
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
 
         // Do task
+        let newUser = {
+            email: 'danghlambk14@gmail.com',
+            balance: 0,
+            createdAt: new Date(),
+            typeofMember: 'beginner',
+            maxSteps: 10000
+        }
+
+        const result = await insertUser(client, newUser);
 
     } catch (error) {
         console.error(error);
