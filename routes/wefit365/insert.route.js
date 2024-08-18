@@ -3,6 +3,6 @@ const insertController = require("../../controller/wefit365/insert.controller");
 
 const insertRouter = express.Router();
 
-insertRouter.route('/create').post(insertController.createNewUser);
+insertRouter.route('/createUser').post(insertController.createNewUser);
 
 module.exports = insertRouter;

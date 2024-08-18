@@ -3122,3 +3122,75 @@ Require stack:
     at Module.load (node:internal/modules/cjs/loader:1208:32)
     at Module._load (node:internal/modules/cjs/loader:1024:12)
     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-08-18T06:25:59.370Z error: uncaughtException: Router.use() requires callback functions but got a [object Object]
+Error: Router.use() requires callback functions but got a [object Object]
+    at proto.use (/home/hoanglam/Digitrust/dgt_evm_gateway/node_modules/express/lib/router/index.js:327:11)
+    at Object.<anonymous> (/home/hoanglam/Digitrust/dgt_evm_gateway/routes/index.js:21:8)
+    at Module._compile (node:internal/modules/cjs/loader:1358:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+    at require (node:internal/modules/helpers:179:18)
+    at Object.<anonymous> (/home/hoanglam/Digitrust/dgt_evm_gateway/config/express.js:8:19)
+    at Module._compile (node:internal/modules/cjs/loader:1358:14)
+2024-08-18T06:27:44.696Z error: uncaughtException: Router.use() requires callback functions but got a [object Object]
+Error: Router.use() requires callback functions but got a [object Object]
+    at proto.use (/home/hoanglam/Digitrust/dgt_evm_gateway/node_modules/express/lib/router/index.js:327:11)
+    at Object.<anonymous> (/home/hoanglam/Digitrust/dgt_evm_gateway/routes/index.js:21:8)
+    at Module._compile (node:internal/modules/cjs/loader:1358:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+    at require (node:internal/modules/helpers:179:18)
+    at Object.<anonymous> (/home/hoanglam/Digitrust/dgt_evm_gateway/config/express.js:8:19)
+    at Module._compile (node:internal/modules/cjs/loader:1358:14)
+2024-08-18T06:30:19.180Z error: uncaughtException: Cannot find module './service/priceFeed_service'
+Require stack:
+- /home/hoanglam/Digitrust/dgt_evm_gateway/index.js
+Error: Cannot find module './service/priceFeed_service'
+Require stack:
+- /home/hoanglam/Digitrust/dgt_evm_gateway/index.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+    at Module._load (node:internal/modules/cjs/loader:986:27)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+    at require (node:internal/modules/helpers:179:18)
+    at Object.<anonymous> (/home/hoanglam/Digitrust/dgt_evm_gateway/index.js:11:5)
+    at Module._compile (node:internal/modules/cjs/loader:1358:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-08-18T06:37:48.146Z error: uncaughtException: Cannot find module './service/priceFeed_service'
+Require stack:
+- /home/hoanglam/Digitrust/dgt_evm_gateway/index.js
+Error: Cannot find module './service/priceFeed_service'
+Require stack:
+- /home/hoanglam/Digitrust/dgt_evm_gateway/index.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+    at Module._load (node:internal/modules/cjs/loader:986:27)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+    at require (node:internal/modules/helpers:179:18)
+    at Object.<anonymous> (/home/hoanglam/Digitrust/dgt_evm_gateway/index.js:11:5)
+    at Module._compile (node:internal/modules/cjs/loader:1358:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+2024-08-18T06:38:41.416Z error: uncaughtException: Cannot find module './service/priceFeed_service'
+Require stack:
+- /home/hoanglam/Digitrust/dgt_evm_gateway/index.js
+Error: Cannot find module './service/priceFeed_service'
+Require stack:
+- /home/hoanglam/Digitrust/dgt_evm_gateway/index.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1145:15)
+    at Module._load (node:internal/modules/cjs/loader:986:27)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+    at require (node:internal/modules/helpers:179:18)
+    at Object.<anonymous> (/home/hoanglam/Digitrust/dgt_evm_gateway/index.js:11:5)
+    at Module._compile (node:internal/modules/cjs/loader:1358:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)

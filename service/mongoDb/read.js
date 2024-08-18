@@ -21,12 +21,20 @@ exports.findActivitiesByEmailAndDate = async (client, userEmail, date) => {
 }
 
 exports.findUserByEmail = async (client, emailUser) => {
-    const result = await client.db(dbName).collection('users').findOne({ email: emailUser });
+    const collection = client.db(dbName).collection('users');
 
-    if (result) {
-        console.log(`Found a user in the collection with the email '${emailUser}':`);
-        console.log(result);
-    } else {
-        console.log(`No users found with the email '${emailUser}'`);
+    try {
+        const result = await collection.findOne({ email: emailUser });
+        if (result) {
+            console.log(`Found a user in the collection with the email '${emailUser}':`);
+            console.log(result);
+            return result;
+        } else {
+            console.log(`No users found with the email '${emailUser}'`);
+            throw new Error(`No users found with the email '${emailUser}'`);
+        }
+    } catch (error) {
+        console.error("Error getting user:", error);
+        throw error;
     }
 }
