@@ -1,8 +1,14 @@
 const dbName = "wefit365";
 
 exports.insertActivity = async (client, newActivity) => {
-    const result = await client.db(dbName).collection("activities").insertOne(newActivity);
-    console.log(`New activity created with the following id: ${result.insertedId}`);
+    const collection = client.db(dbName).collection("activities");
+    try {
+        const result = await collection.insertOne(newActivity);
+        return result;
+    } catch (error) {
+        console.error("Error creating activity:", error);
+        throw error;
+    }
 }
 
 exports.insertMultipleActivities = async (client, newActivities) => {
