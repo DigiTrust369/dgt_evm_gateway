@@ -12,13 +12,15 @@ exports.insertMultipleActivities = async (client, newActivities) => {
     console.log(result.insertedIds);
 }
 
-exports.insertUser = async (client, newUser) => {
-    const result = await client.db(dbName).collection("users").insertOne(newUser);
-    // example result = {
-    //     acknowledged: true,
-    //     insertedId: new ObjectId('66c02cd755ce9f3fddff81a4')
-    // }
-    console.log(`New user created with the following id: ${result.insertedId}`);
+exports.insertUser = async (client, userData) => {
+    const collection = client.db(dbName).collection("users");
+    try {
+        const result = await collection.insertOne(userData);
+        return result;
+    } catch (error) {
+        console.error("Error creating user:", error);
+        throw error;
+    }
 }
 
 exports.insertMultipleUsers = async (client, newUsers) => {
