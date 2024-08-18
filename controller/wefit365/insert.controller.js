@@ -10,8 +10,10 @@ exports.createNewUser = async (req, res, next) => {
             userEmail: req.body.userEmail,
             createdAt: req.body.createdAt,
             balance: 0,
+            totalDistance: 0,
+            totalTime: 0,
             typeofMember: 'beginner',
-            maxSteps: 10000
+            maxSteps: 10000,
         };
         let resp = await insertUser(client, request);
 
